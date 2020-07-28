@@ -1,9 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wraps{% endblock %}
-{% block monTitre %}Tout nos wraps{% endblock %}
-
+{% block title %}Viennoiseries{% endblock %}
+{% block monTitre %}Liste de toutes nos Viennoiseries{% endblock %}
 {% block body %}
-Liste des viennoiseries
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5">
+                <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
+                    <div class="card-header text-center bg-dark">
+                        <img src="{{asset('images/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-center pb-2 mx-3 border-bottom border-primary"></h3>
+                        <p class="card-text">
+                            <h4 class="text-center">{{product.name}}</h4>
+                            <table class="table text-center">
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>{{product.price}} euros</td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{product.description}}</td>
+                                </tr>
+                            </table>
+                            <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

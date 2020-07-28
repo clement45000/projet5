@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Salades{% endblock %}
-{% block monTitre %}Liste de toutes nos Salades{% endblock %}
+{% block title %}Nos produits{% endblock %}
+{% block monTitre %}Liste de tout nos produits{% endblock %}
 {% block body %}
 <div class="container">
+    <a href="" class="text-center col btn btn-success">Ajouter</a>
+   
     <div class="row">
         {% for product in products %}
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5">
@@ -26,6 +28,15 @@
                             </tr>
                         </table>
                         <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                        <div class="row no-gutters">
+                            <a href="" class="col btn btn-warning mr-2">Modifier</a>
+                            <form method="post" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer une voiture')">
+                                <input type="hidden" name="_method" value="SUP">
+                                <input type="hidden" name="_token" value="">
+                                <input type="submit" class="btn btn-danger w-100" value="supprimer">
+                            </form>
+                        </div>
+
                 </div>
             </div>
         </div>

@@ -19,6 +19,16 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function getPatisserieById($categoryprod_id){
+        return $this->createQueryBuilder('c')
+        ->andWhere('c.categoryprod = :val')
+        ->setParameter('val', $categoryprod_id)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
