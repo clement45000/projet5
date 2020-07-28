@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,13 +20,18 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function getPatisserieById($categoryprod_id){
+    public function getProductById($categoryprod_id){
         return $this->createQueryBuilder('c')
         ->andWhere('c.categoryprod = :val')
         ->setParameter('val', $categoryprod_id)
         ->getQuery()
         ->getResult()
         ;
+    }
+
+    public function findAllWithPagination(): Query{
+        return $this->createQueryBuilder('v')
+            ->getQuery();
     }
     
 

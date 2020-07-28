@@ -4,7 +4,9 @@
 {% block monTitre %}Liste de tout nos produits{% endblock %}
 {% block body %}
 <div class="container">
+    <!-- Si admin est à true alors on affiche le bouton ajouter un produit -->
     <a href="" class="text-center col btn btn-success">Ajouter</a>
+    <!-- Fin de la condition -->
    
     <div class="row">
         {% for product in products %}
@@ -28,6 +30,7 @@
                             </tr>
                         </table>
                         <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                        <!-- Si admin est à true alors on affiche les boutons modifier et supprimer-->
                         <div class="row no-gutters">
                             <a href="" class="col btn btn-warning mr-2">Modifier</a>
                             <form method="post" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer une voiture')">
@@ -36,11 +39,16 @@
                                 <input type="submit" class="btn btn-danger w-100" value="supprimer">
                             </form>
                         </div>
+                        <!-- Fin de la condition -->
 
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+    <div class="navigation" >
+        {{ knp_pagination_render(products) }}
+    </div>
 </div>
+
 {% endblock %}
