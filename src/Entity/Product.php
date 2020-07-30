@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -38,9 +42,39 @@ class Product
     private $image;
 
     /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        if($this->imageFile instanceof UploadedFile){
+            $this->updated_at = new \Datetime('now');
+        }
+        return $this;
+
+        // if (null !== $imageFile) {
+        //     // It is required that at least one field changes if you are using doctrine
+        //     // otherwise the event listeners won't be called and the file is lost
+        //     $this->updatedAt = new \DateTimeImmutable();
+        // }
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity=Categoryprod::class, inversedBy="products")
      */
     private $categoryprod;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -88,7 +122,7 @@ class Product
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -103,6 +137,18 @@ class Product
     public function setCategoryprod(?Categoryprod $categoryprod): self
     {
         $this->categoryprod = $categoryprod;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
