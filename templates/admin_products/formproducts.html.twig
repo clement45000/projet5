@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block monTitre %}
+    {% if isUpdating %}
+    Modification {{product.name}} 
+    {% else %}
+        Ajout d'un produit
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5 bg-light shadow">
+
+{{form_start(form)}} <!-- form represente la clé du tableau associatif -->
+<div>
+    <img class="rounded mx-auto d-block"  src="{{asset('images/' ~ product.image)}}" style="width:40%">
+</div>
+        
+    <div>{{ form_row(form.image)}}</div>
+    <div>{{ form_row(form.categoryprod, {"label":"Catégorie du produit"})}} </div>
+    <div>{{ form_row(form.name, {"label":"Nom du produit"})}} </div>
+    <div>{{ form_row(form.price, {"label":"Prix du produit"})}} </div>
+    {{form_widget(form)}}
+    <input type="submit" class="btn btn-primary" value="Modifier">
+{{form_end(form)}}
+</div>
+{% endblock %}

@@ -22,6 +22,7 @@ class ProductsController extends AbstractController
         );
         return $this->render('products/allproducts.html.twig', [
             'products' => $products,
+            "admin" =>false  //  renvoit false pour ne pas afficher les boutons supprimer ajouter et modifier sur le template
         ]);
     }
 

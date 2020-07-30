@@ -4,9 +4,16 @@
 {% block monTitre %}Liste de tout nos produits{% endblock %}
 {% block body %}
 <div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="text-center alert alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
     <!-- Si admin est à true alors on affiche le bouton ajouter un produit -->
-    <a href="" class="text-center col btn btn-success">Ajouter</a>
+    {% if admin %}
+    <a href="{{path('add_product')}}" class="text-center col btn btn-success">Ajouter</a>
     <!-- Fin de la condition -->
+    {% endif %}
    
     <div class="row">
         {% for product in products %}
@@ -31,14 +38,17 @@
                         </table>
                         <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
                         <!-- Si admin est à true alors on affiche les boutons modifier et supprimer-->
+                        {% if admin %}
                         <div class="row no-gutters">
-                            <a href="" class="col btn btn-warning mr-2">Modifier</a>
-                            <form method="post" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer une voiture')">
-                                <input type="hidden" name="_method" value="SUP">
-                                <input type="hidden" name="_token" value="">
+                            <a href="{{path('formproduct',{'id' : product.id})}}" class="col btn btn-warning mr-2">Modifier</a>
+
+                            <form method="POST" class="col" action="{{path('delete_product', {'id' : product.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer le produit ?')">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ product.id)}}">
                                 <input type="submit" class="btn btn-danger w-100" value="supprimer">
                             </form>
                         </div>
+                        {% endif %}
                         <!-- Fin de la condition -->
 
                 </div>
