@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Nos produits{% endblock %}
-{% block monTitre %}Liste de tout nos produits{% endblock %}
+{% block monTitre %}Liste de tous nos produits{% endblock %}
 {% block body %}
 
-<div class="container">
+<!-- <div class="container"> -->
 
     {% for message in app.flashes('success') %}
         <div class="text-center alert alert-success">
@@ -13,13 +13,13 @@
     {% endfor %}
     <!-- Si admin est à true alors on affiche le bouton ajouter un produit -->
     {% if admin %}
-    <a href="{{path('add_product')}}" class="text-center col btn btn-success">Ajouter</a>
+    <a href="{{path('add_product')}}" class="text-center col btn btn-success">Ajouter un produit</a>
     <!-- Fin de la condition -->
     {% endif %}
    
     <div class="row">
         {% for product in products %}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-4">
             <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
                 <div class="card-header text-center bg-dark">
                     <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <h3 class="card-title text-center pb-2 mx-3 border-bottom border-primary"></h3>
                     <p class="card-text">
-                        <h4 class="text-center">{{product.name}}</h4>
+                        <h4 class="text-center h5">{{product.name}}</h4>
                         <table class="table text-center">
                             <tr>
                                 <td>Prix</td>
@@ -63,6 +63,6 @@
         </div>
    
     
-</div>
+<!-- </div> -->
 
 {% endblock %}

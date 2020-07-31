@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
         {% block stylesheets %}{% endblock %}
     </head>
@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('home')}}">Home</a>
+                        <a class="nav-link" href="{{path('home')}}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +53,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="{{path('admin_products')}}">Gestion produits</a>
-                          <a class="dropdown-item" href="">Gestion News</a>
+                          <a class="dropdown-item" href="{{path('admin_posts')}}">Gestion News</a>
                           <a class="dropdown-item" href="">Gestion Commentaires</a>
                         </div>
                     </li>
