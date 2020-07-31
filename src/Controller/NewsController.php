@@ -23,12 +23,12 @@ class NewsController extends AbstractController
      /**
      * @Route("/client/article/{id}", name="show_post")
      */
-    public function showPost()
+    public function showPost($id)
     {
         $repo = $this->getDoctrine()->getRepository(Post::class);
-        $posts = $repo->findAll();
-        return $this->render('news/news.html.twig', [
-            'posts' => $posts
+        $post = $repo->find($id);
+        return $this->render('news/post.html.twig', [
+            'post' => $post
         ]);
     }
 }

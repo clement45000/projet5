@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Post;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GlobalController extends AbstractController
 {
@@ -12,8 +13,10 @@ class GlobalController extends AbstractController
      */
     public function index()
     {
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+        $lastposts = $repository->findBy([],['id'=>'DESC'],1);
         return $this->render('global/home.html.twig', [
-      
+            'lastposts' => $lastposts
         ]);
     }
 

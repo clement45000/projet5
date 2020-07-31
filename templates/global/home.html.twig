@@ -1,11 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
-{% block monTitre %}Bienvenue sur l'Accueil{% endblock %}
+{% block monTitre %}Boulangerie Pâtisserie Kock{% endblock %}
 
 {% block body %}
-<p class="text-center h3">Dernière actualité</p>
-<p class="text-center h3">3 icones pour les produits</p>
-<p class="text-center h3">Presentation de l'entreprise</p>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <img src="{{asset('images/icones/test5.png')}}" class="" alt="Image de l'article">
+                <p class="mt-2 text-light">Nos publications</p>
+            </div>
+            <div class="col">
+                <img src="{{asset('images/icones/croissant.png')}}" alt="Image de l'article">
+                <p class="mt-2 text-light">Nos produits</p>
+            </div>
+                <div class="col">
+                <img src="{{asset('images/icones/contact.png')}}" alt="Image de l'article">
+                <p class="mt-2 text-light">Nous contacter</p>
+            </div>
+        </div>
+
+        <p class="text-center h3 text-light mt-5">Dernière actualité</p>
+        <section class="text-center">
+            {% for lastpost in lastposts %}
+            <article class=" mt-5 mb-5  bg-light">
+                <h2 class="h4 mt-3">{{lastpost.title}}</h2>
+                <div class="mb-5">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
+                <div class="mt-2">
+                    <img src="{{lastpost.image}}" alt="Image de l'article">
+                </div>
+                <a href="" class="btn btn-primary mb-2 mt-3"> Lire l'article</a>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+
+
+
+
+
+
+
+
 
 {% endblock %}
