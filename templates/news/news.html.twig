@@ -6,7 +6,8 @@
 {% block body %}
     <div class="container">
         {% if admin %}
-        <a href="" class="text-center col btn btn-success">Ajouter un article</a>
+        <!-- lien pour l'ajout d'un article (route add_post) -->
+        <a href="{{path('add_post')}}" class="text-center col btn btn-success">Ajouter un article</a>
          {% endif %}
         <section class="">
             {% for post in posts %}
@@ -20,13 +21,14 @@
                 <a href="{{path('show_post', {'id': post.id})}}" class="btn btn-primary mb-4 mt-3"> Lire l'article</a>
                 {% if admin %}
                 <div class="row no-gutters">
+                    <!-- lien pour la modif d'un article -->
                     <a href="" class="col btn btn-warning mr-2">Modifier</a>
                     <form method="" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
                         <input type="hidden" name="_method" value="">
                         <input type="hidden" name="_token" value="">
                         <input type="submit" class="btn btn-danger w-100" value="supprimer">
                     </form>
-                    {% endif %}
+                {% endif %}
                 </div>
             </article>
             {% endfor %}

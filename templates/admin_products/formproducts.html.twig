@@ -14,16 +14,17 @@
 <div class="container mb-5 bg-light shadow">
 
 {{form_start(form)}} <!-- form represente la clé du tableau associatif -->
-<div>
+    <div>
     {% if isUpdating %}
         <img class="rounded mx-auto d-block"  src="{{asset('images/products/' ~ product.image)}}" style="width:40%">
     {% endif %}   
     </div>
    
-    <div>{{ form_row(form.imageFile)}}</div>
-    <div>{{ form_row(form.categoryprod, {"label":"Catégorie du produit"})}} </div>
-    <div>{{ form_row(form.name, {"label":"Nom du produit"})}} </div>
-    <div>{{ form_row(form.price, {"label":"Prix du produit"})}} </div>
+    <div>{{ form_row(form.categoryprod, {"label":"Choississez le type de votre produit"})}} </div>
+    <div>{{ form_row(form.name, {"attr" : {'placeholder':'Entrez le nom de votre produit'},"label":"Nom du produit"})}} </div>
+    <div>{{ form_row(form.price, {"attr" : {'placeholder':'Prix du produit'},"label":"Entrez un prix..."})}} </div>
+    <div>{{ form_row(form.description, {"attr" : {'placeholder':'Ecrivez votre description'},"label":"Ajouter une description(facultatif)"})}} </div>
+    <div>{{ form_row(form.imageFile,{"attr" : {'placeholder':'Télécharger votre image'},"label":"Ajouter une image"})}}</div>
     {{form_widget(form)}}
     <input type="submit" class="btn btn-primary" value="Valider">
 {{form_end(form)}}
