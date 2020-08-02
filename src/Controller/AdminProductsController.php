@@ -43,6 +43,8 @@ class AdminProductsController extends AbstractController
         $formProduct->handleRequest($request);
         if($formProduct->isSubmitted() && $formProduct->isValid()){
             $update = $product->getId() !== null;
+
+
             $em->persist($product);
             $em->flush();
             $this->addFlash("success", ($update) ? "La modification a été effectué" : "L'ajout a été effectué");

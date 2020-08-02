@@ -33,17 +33,17 @@ class AdminPostsController extends AbstractController
 
      /**
       * @Route("/admin/article/addpost", name="add_post")
+      * @Route("/admin/article/{id}", name="update_post")
       */
      public function createAndUpdatePost(Post $post =null, Request $request, EntityManagerInterface $em)
      {
-         if(!$post){
-             $post = new Post();
+         if(!$post){ //Si l'article n'existe pas alors on en créer un 
+             $post = new Post(); // creation de l'objet Post vide (sans valeur)
          }
-         $form = $this->createForm(PostType::class, $post);
-         $form->handleRequest($request);
-
-         if($form->isSubmitted() && $form->isValid()){
-             if(!$post->getId()){
+         $formPost = $this->createForm(PostType::class, $post);
+         $formPost->handleRequest($request);
+         if($formPost->isSubmitted() && $formPost->isValid()){
+             if(!$post->getId()){  //si l'id n'existe pas alors o, créer une date
                  $post->setCreateAt(new \DateTime());
              }
              $em->persist($post);
@@ -52,8 +52,8 @@ class AdminPostsController extends AbstractController
              return $this->redirectToRoute('admin_posts');
          }
          return $this->render('admin_posts/formposts.html.twig', [
-            'formPost'=> $form->createView(),
-            'editMode' =>$post->getId() !== null
+            'formPost'=> $formPost->createView(),
+            'editMode' =>$post->getId() !== null // si !de null (si l'id existe pas on est sur l'ajout et noo la modif)
          ]);
      }
 }

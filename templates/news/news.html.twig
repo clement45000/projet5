@@ -22,7 +22,7 @@
                 {% if admin %}
                 <div class="row no-gutters">
                     <!-- lien pour la modif d'un article -->
-                    <a href="" class="col btn btn-warning mr-2">Modifier</a>
+                    <a href="{{path('update_post',{'id': post.id})}}" class="col btn btn-warning mr-2">Modifier</a>
                     <form method="" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
                         <input type="hidden" name="_method" value="">
                         <input type="hidden" name="_token" value="">
