@@ -10,13 +10,13 @@
                 <div class="">
                     <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>
                     <img src="{{asset('images/products/' ~ post.image)}}" style="width:40%; height:auto" alt="Image de l'article">
-                   <div>{{post.content | raw}}</div>
+                   <div class="h5">{{post.content | raw}}</div>
                 </div>
             </article>
         </section>
-        <section>
+        <section class="mb-5">
         
-            <p class="text-white text-center bg-primary h3">Commentaires</p>
+            <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
               {% for comment in post.comments %}
               <div class="comment">
                   <div class="row">
@@ -30,6 +30,12 @@
                   </div>
               </div>
               {% endfor %}
+            <p class="text-white text-center bg-primary h4 p-2">Laissez un commentaire</p>
+            {{ form_start(commentForm) }}
+            {{ form_row(commentForm.author, {"attr" : {'placeholder':'Entrez votre pseudo'},"label":"Pseudo"})}}
+            {{ form_row(commentForm.content, {"attr" : {'placeholder':'Ecrivez votre commentaire'},"label":"Commentaire"})}}
+            <button type="submit" class="btn btn-primary">Commenter</button>
+            {{form_end(commentForm)}}
         </section>
     </div>
 {% endblock %}

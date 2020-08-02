@@ -71,4 +71,9 @@ class AdminPostsController extends AbstractController
         }
     }
 
+    // public function createComment(Comment $comment = null, Request $request, EntityManagerInterface $em){
+    //     $comment = new Comment();
+    //     $formComment = $this->createForm(CommentType::class, $post);
+        
+    // }   
 }
