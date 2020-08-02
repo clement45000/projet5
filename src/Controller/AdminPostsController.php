@@ -33,7 +33,7 @@ class AdminPostsController extends AbstractController
 
      /**
       * @Route("/admin/article/addpost", name="add_post")
-      * @Route("/admin/article/{id}", name="update_post")
+      * @Route("/admin/article/{id}", name="update_post", methods="GET|POST")
       */
      public function createAndUpdatePost(Post $post =null, Request $request, EntityManagerInterface $em)
      {
@@ -58,4 +58,17 @@ class AdminPostsController extends AbstractController
             //on va pouvoir écrire des conditions pou changer le titre ou faire apparaitre l'image si besoin
          ]);
      }
+
+     /**
+     * @Route("/admin/article/{id}", name="delete_post", methods="SUP")
+     */
+    public function deletePost(Post $post, Request $request, EntityManagerInterface $em){
+        if($this->isCsrfTokenValid("SUP". $post->getId(),$request->get('_token'))){
+            $em->remove($post);
+            $em->flush();
+            // $this->addFlash("success","La suppression a été effectué");
+            return $this->redirectToRoute("admin_posts");
+        }
+    }
+
 }

@@ -26,9 +26,10 @@
                 <div class="row no-gutters">
                     <!-- lien pour la modif d'un article -->
                     <a href="{{path('update_post',{'id': post.id})}}" class="col btn btn-warning mr-2">Modifier</a>
-                    <form method="" class="col" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
-                        <input type="hidden" name="_method" value="">
-                        <input type="hidden" name="_token" value="">
+                   
+                    <form method="post" class="col" action="{{path('delete_post',{'id' : post.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
+                        <input type="hidden" name="_method" value="SUP"> <!--Pour ne oas créer de collision entre les routes -->
+                        <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ post.id)}}">
                         <input type="submit" class="btn btn-danger w-100" value="supprimer">
                     </form>
                 {% endif %}
