@@ -10,12 +10,26 @@
                 <div class="">
                     <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>
                     <img src="{{asset('images/products/' ~ post.image)}}" style="width:40%; height:auto" alt="Image de l'article">
-                    <p>{{post.content | raw}}</p> 
+                   <div>{{post.content | raw}}</div>
                 </div>
             </article>
         </section>
         <section>
+        
             <p class="text-white text-center bg-primary h3">Commentaires</p>
+              {% for comment in post.comments %}
+              <div class="comment">
+                  <div class="row">
+                      <div class="col-3">
+                          {{comment.author}}  (<small>{{comment.createdAt | date
+                              ('d/m/Y à H:i')}}</small>)
+                      </div>
+                      <div class="col-9">
+                          {{comment.content | raw }}
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
         </section>
     </div>
 {% endblock %}

@@ -27,9 +27,9 @@
                 <h2 class="h4 mt-3">{{lastpost.title}}</h2>
                 <div class="mb-5">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
                 <div class="mt-2">
-                    <img src="{{lastpost.image}}" alt="Image de l'article">
+                    <img src="{{asset('images/products/' ~ lastpost.image)}}" alt="Image de l'article">
                 </div>
-                <a href="" class="btn btn-primary mb-2 mt-3"> Lire l'article</a>
+                <a href="{{path('show_post', {'id': lastpost.id})}}" class="btn btn-primary mb-2 mt-3"> Lire l'article</a>
             </article>
             {% endfor %}
         </section>

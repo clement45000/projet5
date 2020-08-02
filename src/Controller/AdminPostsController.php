@@ -52,8 +52,10 @@ class AdminPostsController extends AbstractController
              return $this->redirectToRoute('admin_posts');
          }
          return $this->render('admin_posts/formposts.html.twig', [
+             'post' => $post,
             'formPost'=> $formPost->createView(),
-            'editMode' =>$post->getId() !== null // si !de null (si l'id existe pas on est sur l'ajout et noo la modif)
+            'editMode' =>$post->getId() !== null // si l'id est présent alors la variable edit est vrai sinn on est sur l'ajout est elle est fausse
+            //on va pouvoir écrire des conditions pou changer le titre ou faire apparaitre l'image si besoin
          ]);
      }
 }

@@ -1,15 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Admin{% endblock %}
-{% block monTitre %}Ajouter un Article{% endblock %}
+
+{% block monTitre %}
+    {% if editMode %}
+    Modification {{post.title}} 
+    {% else %}
+        Ajouter un Article
+    {% endif %}
+{% endblock %}
+
 
 {% block body %}
 <div class="container">
+    {% if editMode %}
+    <div>
+         <img class="rounded mx-auto d-block"  src="{{asset('images/products/' ~ post.image)}}" style="width:40%">
+    </div>
+    {% endif %}
 {{ form_start(formPost)}} <!--affiche la balise ouvrante du formulaire configuré-->
-
 {{form_row(formPost.title, {'attr' : {'placeholder' : "Titre de l'article"}}) }}
 {{form_row(formPost.content, {'attr' : {'placeholder' : "Contenu de l'article"} }) }}
-{{form_row(formPost.image, {'attr' : {'placeholder': "URL de l'image"}}) }}
+{{form_row(formPost.imageFile, {'attr' : {'placeholder': "URL de l'image"}}) }}
 <button type="submit" class="btn btn-primary">
     {% if editMode %}
         Modifier l'article
