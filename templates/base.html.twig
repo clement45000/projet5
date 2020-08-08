@@ -16,53 +16,57 @@
           
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('home')}}">Accueil</a>
+                    <li class="nav-item ">
+                        <a class="nav-link size_font" href="{{path('home')}}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Nos produits
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{path('boulangeries',{'categoryprod_id':33})}}">Boulangerie</a>
-                          <a class="dropdown-item" href="{{path('patisseries',{'categoryprod_id':32})}}">Pâtisserie</a>
-                          <a class="dropdown-item" href="{{path('viennoiseries',{'categoryprod_id':34})}}">Viennoiserie</a>
-                          <a class="dropdown-item" href="{{path('products')}}">Tous</a>
+                          <a class="dropdown-item size_font " href="{{path('boulangeries',{'categoryprod_id':33})}}">Boulangerie</a>
+                          <a class="dropdown-item size_font" href="{{path('patisseries',{'categoryprod_id':32})}}">Pâtisserie</a>
+                          <a class="dropdown-item size_font " href="{{path('viennoiseries',{'categoryprod_id':34})}}">Viennoiserie</a>
+                          <a class="dropdown-item size_font" href="{{path('products')}}">Tous</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Pause déjeuner
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{path('sandwichs',{'categoryprod_id':35})}}">Nos Sandwichs</a>
-                          <a class="dropdown-item" href="{{path('salades',{'categoryprod_id':36})}}">Nos Salades</a>
-                          <a class="dropdown-item" href="{{path('wraps',{'categoryprod_id':37})}}">Nos Wraps</a>
+                          <a class="dropdown-item size_font" href="{{path('sandwichs',{'categoryprod_id':35})}}">Nos Sandwichs</a>
+                          <a class="dropdown-item size_font " href="{{path('salades',{'categoryprod_id':36})}}">Nos Salades</a>
+                          <a class="dropdown-item size_font " href="{{path('wraps',{'categoryprod_id':37})}}">Nos Wraps</a>
                         </div>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('show_posts')}}">Actualités</a>
+                        <a class="nav-link size_font " href="{{path('show_posts')}}">Actualités</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link size_font" href="{{path('weather')}}">Météo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('contact')}}">Contact</a>
+                        <a class="nav-link size_font" href="{{path('contact')}}">Contact</a>
                     </li>
+                   
                     <!-- Ajouter si admin et à true alors on affiche onglet admin -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{path('admin_products')}}">Gestion produits</a>
-                          <a class="dropdown-item" href="{{path('admin_posts')}}">Gestion News</a>
-                          <a class="dropdown-item" href="">Gestion Commentaires</a>
+                          <a class="dropdown-item size_font" href="{{path('admin_products')}}">Gestion produits</a>
+                          <a class="dropdown-item size_font" href="{{path('admin_posts')}}">Gestion News</a>
+                          <a class="dropdown-item size_font" href="">Gestion Commentaires</a>
                         </div>
                     </li>
                     <!-- Fin de la condition de l'admin -->
                 </ul>
-                <a class="nav-link text-light" href="">Mon compte</a>
-                <a class="nav-link text-light" href="">Inscription</a>
-                <a class="nav-link text-light" href="">Connexion</a>
-                <a class="nav-link text-light" href="">Deconnexion</a>
+                <a class="nav-link text-light size_font" href="">Mon compte</a>
+                <a class="nav-link text-light size_font" href="">S'inscrire</a>
+                <a class="nav-link text-light size_font" href="">Se connecter</a>
+                <a class="nav-link text-light size_font" href="">Deconnexion</a>
             </div>
           </nav>
         <div class="container">
@@ -76,5 +80,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="{{asset('js/appweather.js')}}"></script>
     </body>
 </html>

@@ -6,14 +6,13 @@
 {% block body %}
     <div class="container">
         <section>
-            <article class=" mt-2 mb-5">            
-                <div class="">
-                    <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>
-                    <img src="{{asset('images/products/' ~ post.image)}}" style="width:40%; height:auto" alt="Image de l'article">
-                   <div class="h5">{{post.content | raw}}</div>
-                </div>
+            <article class=" mt-2 mb-5"> 
+                <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>           
+                <img src="{{asset('images/products/' ~ post.image)}}" style="width:40%; height:auto" alt="Image de l'article">
+                <div class="h5 mt-5">{{post.content | raw}}</div>
             </article>
         </section>
+
         <section class="mb-5">
         
             <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
@@ -23,12 +22,18 @@
                       <div class="col-3">
                           {{comment.author}}  (<small>{{comment.createdAt | date
                               ('d/m/Y à H:i')}}</small>)
+                             
                       </div>
-                      <div class="col-9">
+                      <div class="col-7">
                           {{comment.content | raw }}
                       </div>
-                  </div>
+                      <div class="col-2">
+                       <button class="btn btn-danger">Supprimer</button>
+                    </div>
+                  </div> 
+                 
               </div>
+           
               {% endfor %}
             <p class="text-white text-center bg-primary h4 p-2">Laissez un commentaire</p>
             {{ form_start(commentForm) }}

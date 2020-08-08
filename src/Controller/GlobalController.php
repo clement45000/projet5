@@ -29,4 +29,14 @@ class GlobalController extends AbstractController
       
         ]);
     }
+
+      /**
+     * @Route("/clien/weather", name="weather")
+     */
+    public function getWeatherbycity()
+    {
+        return $this->render('global/weather.html.twig', [
+      
+        ]);
+    }
 }

@@ -6,3 +6,12 @@
     object-fit:cover;
 }
 
+.size_font{
+font-size: 1.0em !important;
+}
+
+.bckgrdpersoblack{background-color:black;}
+/* .bckgrdperso{background-color:black;}
+.bckgrdperso{background-color:black;}
+.bckgrdperso{background-color:black;}
+.bckgrdperso{background-color:black;} */
