@@ -4,7 +4,14 @@
 {% block monTitre %}{{post.title}}{% endblock %}
 
 {% block body %}
+    
     <div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="text-center alert alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
+
         <section>
             <article class=" mt-2 mb-5"> 
                 <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>           
@@ -26,9 +33,16 @@
                       </div>
                       <div class="col-7">
                           {{comment.content | raw }}
+                          {{comment.id}}
+                       
                       </div>
                       <div class="col-2">
-                       <button class="btn btn-danger">Supprimer</button>
+                         
+                    <form method="post" class="col" action="{{path('delete_comment',{'id' : comment.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
+                        <input type="hidden" name="_method" value="DEL"> <!--Pour ne oas créer de collision entre les routes -->
+                        <input type="hidden" name="_tokencomment" value="{{csrf_token('DEL' ~ comment.id)}}">
+                        <input type="submit" class="btn btn-danger w-100" value="supprimer">
+                    </form>
                     </div>
                   </div> 
                  

@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Entity\Comment;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -46,9 +47,10 @@ class AdminPostsController extends AbstractController
              if(!$post->getId()){  //si l'id n'existe pas alors o, créer une date
                  $post->setCreateAt(new \DateTime());
              }
+             $updateNews = $post->getId() !== null;
              $em->persist($post);
              $em->flush();
-
+             $this->addFlash("success", ($updateNews) ? "La modification de l'article a été effectué" : "L'ajout de l'article a été effectué");
              return $this->redirectToRoute('admin_posts');
          }
          return $this->render('admin_posts/formposts.html.twig', [
@@ -66,14 +68,20 @@ class AdminPostsController extends AbstractController
         if($this->isCsrfTokenValid("SUP". $post->getId(),$request->get('_token'))){
             $em->remove($post);
             $em->flush();
-            // $this->addFlash("success","La suppression a été effectué");
+            $this->addFlash("success","La suppression de l'article a été effectué");
             return $this->redirectToRoute("admin_posts");
         }
     }
-
-    // public function createComment(Comment $comment = null, Request $request, EntityManagerInterface $em){
-    //     $comment = new Comment();
-    //     $formComment = $this->createForm(CommentType::class, $post);
+    /**
+     * @Route("/admin/article/{id}", name="delete_comment", methods="DEL")
+     */
+    public function deleteComment(Comment $comment, Request $request, EntityManagerInterface $em){
+        if($this->isCsrfTokenValid("DEL". $comment->getId(),$request->get('_tokencomment'))){
+            $em->remove($comment);
+            $em->flush();
+            $this->addFlash("success","La suppression du commentaire a été effectué");
+            return $this->redirectToRoute("admin_posts");
+        }
         
-    // }   
+    }   
 }

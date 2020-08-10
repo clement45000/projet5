@@ -5,9 +5,14 @@
 
 {% block body %}
     <div class="container">
+        {% for message in app.flashes('success') %}
+        <div class="text-center alert alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
         {% if admin %}
         <!-- lien pour l'ajout d'un article (route add_post) -->
-        <a href="{{path('add_post')}}" class="text-center col btn btn-success">Ajouter un article</a>
+        <a href="{{path('add_post')}}" class="text-center col btn btn-info">Ajouter un article</a>
          {% endif %}
         <section class="">
             <div class="navigation col-md-4 offset-md-4 mt-3">

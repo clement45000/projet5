@@ -49,6 +49,7 @@ class NewsController extends AbstractController
             $em->persist($comment);
             $em->flush();
 
+        $this->addFlash("success","Votre commentaire a été ajouté");    
         return $this->redirectToRoute('show_post', ['id' => $post->getId()]);    
         }
 
