@@ -1,3 +1,17 @@
+/*home*/
+#intro
+{
+    position:absolute;
+    margin-top: -30%;
+    left:10%;
+    z-index: 1;
+}
+
+#diapo{
+position: relative;
+z-index: 2;
+}
+
 .resizing_image
 {
     width:200px;
@@ -10,9 +24,8 @@
 font-size: 1.0em !important;
 }
 
-
-
 .bckgrdpersoblack{background-color:black;}
+.bckgrdpersopink{background-color:rgb(245, 21, 140);}
 /* .bckgrdperso{background-color:black;}
 .bckgrdperso{background-color:black;}
 .bckgrdperso{background-color:black;}

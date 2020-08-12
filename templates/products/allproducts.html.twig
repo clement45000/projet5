@@ -5,64 +5,68 @@
 {% block body %}
 
 <!-- <div class="container"> -->
-
+<div class="container">
+    <div class="container p-5 mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+        <h1 class="text-center text-light mt-5 bg-danger pt-3 pb-3 ">Découvrez tout nos produits</h1>
     {% for message in app.flashes('success') %}
         <div class="text-center alert alert-success">
             {{message}}
         </div>
     {% endfor %}
+
     <!-- Si admin est à true alors on affiche le bouton ajouter un produit -->
     {% if admin %}
     <a href="{{path('add_product')}}" class="text-center col btn btn-info">Ajouter un produit</a>
     <!-- Fin de la condition -->
     {% endif %}
-   
-    <div class="row">
-        {% for product in products %}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-4">
-            <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
-                <div class="card-header text-center bg-dark">
-                    <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
-                </div> 
-                <h4 class="text-center h5">{{product.name}}</h4>
-                <div class="card-body">
-                    <h3 class="card-title text-center pb-2 mx-3 border-bottom border-primary"></h3>
-                    <p class="card-text">
-                       
-                        <table class="table text-center">
-                            <tr>
-                                <td>Prix</td>
-                                <td>{{product.price}} euros</td>
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>{{product.description}}</td>
-                            </tr>
-                        </table>
-                        <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
-                        <!-- Si admin est à true alors on affiche les boutons modifier et supprimer-->
-                        {% if admin %}
-                        <div class="row no-gutters">
-                            <a href="{{path('formproduct',{'id' : product.id})}}" class="col btn btn-warning mr-2">Modifier</a>
+    <div class="navigation col-md-4 offset-md-4 mt-4">
+        {{ knp_pagination_render(products) }}
+    </div>
+ 
+        <div class="row">
+            {% for product in products %}
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-4">
+                <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
+                    <div class="card-header text-center bg-primary">
+                        <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
+                    </div> 
+                   
+                    <div class="card-body"> 
+                        <h3 class="card-text text-center h5">{{product.name}}</h3>  
+                            <table class="table text-center">
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>{{product.price}} euros</td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{product.description}}</td>
+                                </tr>
+                            </table>
+                            <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                            <!-- Si admin est à true alors on affiche les boutons modifier et supprimer-->
+                            {% if admin %}
+                            <div class="row no-gutters">
+                                <a href="{{path('formproduct',{'id' : product.id})}}" class="col btn btn-warning mr-2">Modifier</a>
 
-                            <form method="POST" class="col" action="{{path('delete_product', {'id' : product.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer le produit ?')">
-                                <input type="hidden" name="_method" value="delete">
-                                <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ product.id)}}">
-                                <input type="submit" class="btn btn-danger w-100" value="supprimer">
-                            </form>
-                        </div>
-                        {% endif %}
-                        <!-- Fin de la condition -->
+                                <form method="POST" class="col" action="{{path('delete_product', {'id' : product.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer le produit ?')">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ product.id)}}">
+                                    <input type="submit" class="btn btn-danger w-100" value="supprimer">
+                                </form>
+                            </div>
+                            {% endif %}
+                            <!-- Fin de la condition -->
 
+                    </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
-    
-        <div class="navigation col-md-4 offset-md-4 mt-3">
-            {{ knp_pagination_render(products) }}
-        </div>
-   
+            {% endfor %}
+        
+            <div class="navigation col-md-4 offset-md-4 mt-3">
+                {{ knp_pagination_render(products) }}
+            </div>
+    </div>
     
 <!-- </div> -->
 
