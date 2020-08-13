@@ -1,25 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Actualités{% endblock %}
-{% block monTitre %}{{post.title}}{% endblock %}
-
 {% block body %}
     
-    <div class="container">
+    <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
+   
     {% for message in app.flashes('success') %}
         <div class="text-center alert alert-success">
             {{message}}
         </div>
     {% endfor %}
 
-        <section>
+        <section> 
+            <div class="bg-primary p-4">
+                <h1 class="text-center text-light mt-5">{{post.title}}</h1> 
+                <p class="text-center text-light">Publié le : {{post.createAt | date('d/m/Y')}} </p>
+            </div>
+            
             <article class=" mt-2 mb-5"> 
-                <p>Publié le : {{post.createAt | date('d/m/Y')}} </p>           
-                <img src="{{asset('images/products/' ~ post.image)}}" style="width:40%; height:auto" alt="Image de l'article">
-                <div class="h5 mt-5">{{post.content | raw}}</div>
+                <div class="text-center container">
+                      <img class="shadow-lg p-4 mb-2 bg-white rounded center mt-5" src="{{asset('images/products/' ~ post.image)}}" style="width:80%; height:30%;" alt="Image de l'article">
+                </div>      
+                <div class="h5 mt-5 text-center">{{post.content | raw}}</div>
             </article>
         </section>
 
+        <section>
+            <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
+            
+            {% for comment in post.comments %}
+            <div class="text-center border border-bg-dark mt-2 pb-2 shadow-lg p-2 bg-white rounded">
+                <p class="mt-2 ml-2 mb-0"><span class="font-weight-bold">{{comment.author}} </span>a écrit le {{comment.createdAt | date('d/m/Y à H:i')}}</p> 
+                <p></p>
+                <p>{{comment.content | raw }}</p>
+                <form method="post" class="col" action="{{path('delete_comment',{'id' : comment.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
+                    <input type="hidden" name="_method" value="DEL"> <!--Pour ne oas créer de collision entre les routes -->
+                    <input type="hidden" name="_tokencomment" value="{{csrf_token('DEL' ~ comment.id)}}">
+                    <input type="submit" class="btn btn-danger mb-3" value="supprimer le commentaire">
+                </form>
+            </div>
+            {% endfor %}
+        </section>
+{# 
         <section class="mb-5">
         
             <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
@@ -48,13 +70,17 @@
                  
               </div>
            
-              {% endfor %}
-            <p class="text-white text-center bg-primary h4 p-2">Laissez un commentaire</p>
-            {{ form_start(commentForm) }}
+              {% endfor %} #}
+            <p class="text-white text-center bg-primary h4 p-2 mt-3">Laissez un commentaire</p>
+            {{ form_start(commentForm, {'attr': {'novalidate' : 'novalidate'}})}}
             {{ form_row(commentForm.author, {"attr" : {'placeholder':'Entrez votre pseudo'},"label":"Pseudo"})}}
             {{ form_row(commentForm.content, {"attr" : {'placeholder':'Ecrivez votre commentaire'},"label":"Commentaire"})}}
             <button type="submit" class="btn btn-primary">Commenter</button>
             {{form_end(commentForm)}}
+
+            <div>
+                <p class="h5 text-center">Vous devez vous identifier pour laisser un commentaire.<a class="text-primary" href="#"> Se connecter</a> ou <a  class="text-primary" href="#">S'inscrire</a></p>
+            </div>
         </section>
     </div>
 {% endblock %}

@@ -2,24 +2,20 @@
 
 {% block title %}Admin{% endblock %}
 
-{% block monTitre %}
-    {% if isUpdating %}
-    Modification {{product.name}} 
-    {% else %}
-        Ajout d'un produit
-    {% endif %}
-{% endblock %}
 
 {% block body %}
-<div class="container mb-5 bg-light shadow">
-
-{{form_start(form)}} <!-- form represente la clé du tableau associatif -->
+<div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
+  {% if isUpdating %}
+    <h1 class="text-center text-light mt-5 bg-danger pt-3 pb-3 mb-5">Modification {{product.name}}</h1>
+    {% else %}
+    <h1 class="text-center text-light mt-5 bg-danger pt-3 pb-3 mb-5 ">Ajouter un produit</h1>
+    {% endif %}
+{{form_start(form, {'attr': {'novalidate' : 'novalidate'}})}} <!-- form represente la clé du tableau associatif -->
     <div>
     {% if isUpdating %}
-        <img class="rounded mx-auto d-block"  src="{{asset('images/products/' ~ product.image)}}" style="width:40%">
+        <img class="rounded mx-auto d-block mb-5"  src="{{asset('images/products/' ~ product.image)}}" style="width:40%">
     {% endif %}   
     </div>
-   
     <div>{{ form_row(form.categoryprod, {"label":"Choississez le type de votre produit"})}} </div>
     <div>{{ form_row(form.name, {"attr" : {'placeholder':'Entrez le nom de votre produit'},"label":"Nom du produit"})}} </div>
     <div>{{ form_row(form.price, {"attr" : {'placeholder':'Prix du produit'},"label":"Entrez un prix..."})}} </div>

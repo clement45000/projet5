@@ -26,13 +26,15 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=10, max=255, minMessage="Votre Titre est bien trop court")
+     * @Assert\Length(min=5, minMessage="Votre titre doit comporter au moins 5 caractères")
+     * @Assert\NotBlank(message="Vous devez remplir ce champs")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=10, minMessage="Votre contenu est bien trop court")
+     * @Assert\Length(min=10, minMessage="Votre contenu est trop court")
+     * @Assert\NotBlank(message="Vous devez remplir ce champs")
      */
     private $content;
 
@@ -43,6 +45,7 @@ class Post
 
      /**
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="image")
+     * @Assert\NotBlank(message="Vous devez ajouter une image")
      */
     private $imageFile;
 

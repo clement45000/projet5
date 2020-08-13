@@ -2,33 +2,36 @@
 
 {% block title %}Admin{% endblock %}
 
-{% block monTitre %}
-    {% if editMode %}
-    Modification {{post.title}} 
-    {% else %}
-        Ajouter un Article
-    {% endif %}
-{% endblock %}
-
 
 {% block body %}
-<div class="container">
+
+    <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
     {% if editMode %}
-    <div>
-         <img class="rounded mx-auto d-block"  src="{{asset('images/products/' ~ post.image)}}" style="width:40%">
-    </div>
-    {% endif %}
-{{ form_start(formPost)}} <!--affiche la balise ouvrante du formulaire configuré-->
-{{form_row(formPost.title, {'attr' : {'placeholder' : "Titre de l'article"}}) }}
-{{form_row(formPost.content, {'attr' : {'placeholder' : "Contenu de l'article"} }) }}
-{{form_row(formPost.imageFile, {'attr' : {'placeholder': "URL de l'image"}}) }}
-<button type="submit" class="btn btn-primary">
-    {% if editMode %}
-        Modifier l'article
+        <h1 class="text-center text-light mt-5 bg-danger pt-3 pb-3 mb-5">{{post.title}}</h1>
     {% else %}
-        Ajouter l'article
+        <h1 class="text-center text-light mt-5 bg-danger pt-3 pb-3 mb-5">Ajouter un article</h1>    
     {% endif %}
-</button>
-{{ form_end(formPost) }}
-</div>
+
+    {% if editMode %}
+        <div>
+            <img class="rounded mx-auto d-block mb-5"  src="{{asset('images/products/' ~ post.image)}}" style="width:40%">
+        </div>
+    {% endif %}
+
+  
+
+    {{ form_start(formPost, {'attr': {'novalidate' : 'novalidate'}})}} <!--affiche la balise ouvrante du formulaire configuré-->
+    {{form_row(formPost.title, {"attr" : {'placeholder':'Entrez un titre'},"label":"Titre de l'article"})}}
+    {{form_row(formPost.content, {"attr" : {'placeholder':'Ecrivez un contenu'},"label":"Contenu de l'article"})}}
+    {{form_row(formPost.imageFile, {"attr" : {'placeholder':'Télécharger une image'},"label":"Image de l'article"})}}
+    <button type="submit" class="btn btn-primary">
+        {% if editMode %}
+            Modifier l'article
+        {% else %}
+            Ajouter l'article
+        {% endif %}
+    </button>
+    {{ form_end(formPost) }}
+    </div>
+
 {% endblock %}

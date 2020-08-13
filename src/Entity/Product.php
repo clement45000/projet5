@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -23,6 +24,8 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champs ne peut pas être vide")
+     * @Assert\Length(min=2, minMessage="Ce champs doit comporter au moins 2 caractères")
      */
     private $name;
 
@@ -33,6 +36,8 @@ class Product
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Ce champs ne peut pas être vide")
+     * @Assert\Range(min=0.1,max=100, notInRangeMessage="Vous devez choisir un nombre compris entre 0.1 et 300")
      */
     private $price;
 
@@ -43,6 +48,7 @@ class Product
 
     /**
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="image")
+     * @Assert\NotBlank(message="Vous devez ajouter une image")
      */
     private $imageFile;
 
