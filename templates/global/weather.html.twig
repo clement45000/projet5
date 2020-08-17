@@ -4,9 +4,9 @@
 {% block monTitre %}Météo{% endblock %}
 
 {% block body %}
-<div class="container shadow"> 
-    <h1 class="text-center mt-5 pt-5">Rechercher la météo actuelle</h1>
-      
+<section>
+    <div class="container  mt-5 shadow p-5 mb-5 bg-white rounded"> 
+        <h1 class="text-center mt-5">Rechercher la météo actuelle</h1>
             <div class="text-center mt-5" id="info_weather">
               <!--  <p><span>Message d'erreur</span><p> -->
                 <p class="h4">Entrez une ville</p>
@@ -17,5 +17,7 @@
                 <p class="h3 mt-4 pb-5"> Condition : <span id="conditions"> </span></p>
             </div>
     </div>
+</section>
+
 
 {% endblock %}

@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Sandwich{% endblock %}
+{% block meta_des_name %}Liste de nos sandwichs{% endblock %}
+{% block meta_des_content %}Une peite faim découvrez nos sandwichs{% endblock %}
 {% block body %}
 <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
-    <h1 class="text-center text-light mt-5 bg-danger p-5">Découvrez nos sandwichs</h1>
+    <h1 class="text-center text-light mt-5 bg-primary p-5">Découvrez nos sandwichs</h1>
     
     <div class="row">
         {% for product in products %}

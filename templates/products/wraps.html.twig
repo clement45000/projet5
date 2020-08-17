@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
+{% block title %}Nos wraps{% endblock %}
+{% block meta_des_name %}Liste de nos wraps{% endblock %}
+{% block meta_des_content %}Une petite faim découvrez nos merveilleux wraps{% endblock %}
 
-{% block title %}Viennoiseries{% endblock %}
 {% block body %}
     <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">  
-         <h1 class="text-center mt-5">Découvrez nos Wraps</h1>
+        <h1 class="text-center text-light mt-5 bg-primary p-5">Découvrez nos wraps</h1>
         <div class="row">
      
             {% for product in products %}

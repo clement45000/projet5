@@ -39,4 +39,14 @@ class GlobalController extends AbstractController
       
         ]);
     }
+
+    /**
+     * @Route("/clien/confidentialité", name="mentions_legales")
+     */
+    public function mentions()
+    {
+        return $this->render('global/mentions.html.twig', [
+      
+        ]);
+    }
 }

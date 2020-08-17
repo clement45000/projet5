@@ -1,73 +1,77 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Accueil{% endblock %}
-
+{% block meta_des_name %}Boulangerie Patisserie{% endblock %}
+{% block meta_des_content %}Venez découvrir nos pâtisseries, nos pais, nos wraps et plus encore{% endblock %}
 {% block body %}
 <!-- header photo -->
-    <div id="diapo" class="shadow-lg  bg-white rounded">
-      <img src="{{asset('images/caroussel/macarons_color.jpg')}}" class="d-block w-100"  alt="...">
-    <div>          
+    <header>
+        <div id="diapo" class="shadow-lg bg-white rounded">
+            <img src="{{asset('images/caroussel/macarons_color.jpg')}}" class="d-block w-100"  alt="image de macarons">
+        </div>          
 
-        <!-- Accroche  -->
-      <div class="text-center" id="intro">
-        <h1 class="text-light h1">Boulangerie-Pâtisserie Kock</h1>
-        <p class="h3">Nous vous souhaitons la bienvenue</p>
-        <a class="btn bckgrdpersopink text-light mt-2" href="">Voir nos produits</a>
-      </div>
-
-     <!-- A propos de l'Entreprise -->
-     <div class="container">
-        <h2 class="text-center mt-5">Qui sommes nous ?</h2>
-        <p class="h4 mt-5 text-center"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
-        Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
-        </p> 
-        <p class="h4 mt-5 text-center"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
-            Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
-        </p> 
-     </div>
+              <!-- Accroche  -->
+        <div class="text-center" id="intro">
+            <h1 class="text-light h1">Boulangerie-Pâtisserie-Kockt</h1>
+            <p class="h3">Nous vous souhaitons la bienvenue</p>
+            <a class="btn bckgrdpersopink text-light " href="{{path('products')}}">Voir nos produits</a>
+        </div>
+    </header>
    
-     <!-- section du site (Produits article contact)  -->
-        <div class="mt-5 bg-light">
-            <div class="row text-center mt-5">
+    <section class="bg-light pb-2">
+       <!-- A propos de l'Entreprise -->
+        <div  class="container pb-5">
+            <h2 class="text-center text-secondary h1 pt-4 pb-5">Qui sommes nous ?</h2>
+            <div class="text-center">
+            {# <img class="shadow-lg p-2 mb-2 bg-white rounded center" src="{{asset('images/divers/jpsabine.jpeg')}}" style="width:80%" alt="Image de l'article"> #}
+            </div>
+            <p class="h4  text-center text-muted"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
+            Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
+            </p> 
+            <p class="h4 mt-5 text-center text-muted"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
+            Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
+            </p>  
+        </div>
+    </section>
+  
+
+    <section>
+      <!-- section du site (Produits article contact)  -->
+      <div class="container  pb-5">
+          <h3 class="text-center text-light h1  pt-5 text_shadow">Plus d'infos</h3>
+          <p class="text-center text-white h4">Bonne navigation</p>
+          <div class="row text-center">
               <div class="col">
                   <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/news.png')}}" alt="image d'un journal">
-                 <div>
-                     <a class="btn bckgrdpersopink text-light" href="{{path('show_posts')}}">Nos publications</a>
-                 </div>
+                  <div><a class="btn bckgrdpersopink text-light" href="{{path('show_posts')}}">Nos publications</a></div>
               </div>
-            <div class="col">
-                <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/croissant.png')}}" alt="icone d'un croissant">
-                <div>
-                    <a class="btn bckgrdpersopink text-light" href="{{path('products')}}">Nos produits</a>
-                </div>
-            </div>
-            <div class="col">
+              <div class="col">
+                  <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/croissant.png')}}" alt="icone d'un croissant">
+                  <div><a class="btn bckgrdpersopink text-light" href="{{path('products')}}">Nos produits</a></div>
+              </div>
+              <div class="col">
                   <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/contact.png')}}" alt="icone contact">
-                <div>
-                    <a class="btn bckgrdpersopink text-light" href="{{path('contact')}}">Nous contacter</a>
-                </div>
-            </div>
-        </div>
-
-          <hr class="shadow">
-
-          <!-- Encart sur la dernière actualité -->
-          <div id="test">
-            <section class="text-center"> 
-           
-              <p class="text-center h3 pt-5">Dernière actualité</p>
-                {% for lastpost in lastposts %}
-                <article class=" mt-5 mb-5 pb-5">
-                    <h2 class="h4 mt-3">{{lastpost.title}}</h2>
-                    <div class="mb-5">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
-                    <div class="mt-2">
-                        <img src="{{asset('images/products/' ~ lastpost.image)}}" style="width:20%" alt="Image de l'article">
-                    </div>
-                    <a href="{{path('show_post', {'id': lastpost.id})}}" class="btn btn-primary  mt-3"> Lire l'article</a>
-                </article>
-                {% endfor %}
-            </section>  
+                  <div><a class="btn bckgrdpersopink text-light" href="{{path('contact')}}">Nous contacter</a></div>
+              </div>
           </div>
       </div>
-    </div>
+    </section>
+   
+     
+
+          <!-- Encart sur la dernière actualité -->
+    <section class="text-center bckgrdpersoblack">     
+        <div id="test">
+            <h4 class="text-center h1 pt-5 text-light">Dernière actualité</h4>
+            {% for lastpost in lastposts %}
+            <article class=" mt-5 pb-5">
+                <p class="h4 mt-3 text-light">{{lastpost.title}}</p>
+                <div class="mb-2 text-secondary mb-2">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
+                <div class="mt-3">
+                    <img class="shadow-lg p-2 mb-2 bg-white rounded center" src="{{asset('images/products/' ~ lastpost.image)}}" style="width:35%" alt="Image de l'article">
+                </div>
+                    <a href="{{path('show_post', {'id': lastpost.id})}}" class="btn bckgrdpersopink text-light mt-3"> Lire l'article</a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>  
 {% endblock %}
