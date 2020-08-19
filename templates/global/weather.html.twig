@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Météo{% endblock %}
+{% block meta_des_name %}Météo{% endblock %}
+{% block meta_des_content %}Suivez l'actualité météo{% endblock %}
 {% block monTitre %}Météo{% endblock %}
 
 {% block body %}
@@ -24,7 +26,7 @@
 
                       <div class="pb-5">
                           <input class="mt-4 input_meteo" type="text" name="city" id="enter_town" value="" placeholder="Exemple : Paris">
-                          <input class="btn btn-secondary btn_padd" type="button" value="Afficher la metéo" id="get_weather">
+                          <input class="btn bckgrdpersopink text-light btn_padd" type="button" value="Afficher la metéo" id="get_weather">
                       </div>
 
                       <div id="data_weather" >

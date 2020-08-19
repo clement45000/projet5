@@ -7,7 +7,7 @@
 
 <section>
     <div class="container p-3 mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <h1 id="title_allproducts" class="text-center text-light mt-5 bg-primary p-5 ">Découvrez tout nos produits</h1>
+        <h1 id="title_allproducts" class="text-center text-light mt-5 bg-primary p-5 ">Découvrez tout nos produits</h1>
             {% for message in app.flashes('success') %}
             <div class="text-center alert alert-success">
                 {{message}}
@@ -32,7 +32,7 @@
                         </div> 
     
                         <div class="card-body"> 
-                            <h2 class="card-text text-center h4">{{product.name}}</h2>  
+                            <p class="card-text text-center h4">{{product.name}}</p>  
                             <table class="table text-center">
                                 <tr>
                                     <td>Prix</td>
@@ -44,7 +44,7 @@
                                 </tr>
                             </table>
 
-                            <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                            <p class="text-center colorpersopink">{{product.categoryprod.libelle}}</p>
                             <!-- Si admin est à true alors on affiche les boutons modifier et supprimer-->
                             {% if admin %}
                             <div class="row no-gutters">

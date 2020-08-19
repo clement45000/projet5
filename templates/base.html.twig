@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
         <meta property="og:type" content="website"/>
         <meta property="og:description" content="Boulangerie-Pâtisserie Dubois, 18700 Aubigny sur Nère"/>
         <meta property="og:url" content="url du site"/>
-        <link rel="icon" type="" href="{{asset('images/divers/logok.png')}}"/>  
+        <link rel="icon" type="image/png" href="{{asset('images/divers/logok.png')}}"/>  
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -29,10 +29,10 @@
                         <a class="nav-link size_font" href="{{path('home')}}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle size_font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Nos produits
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu">
                           <a class="dropdown-item size_font " href="{{path('boulangeries',{'categoryprod_id':33})}}">Boulangerie</a>
                           <a class="dropdown-item size_font" href="{{path('patisseries',{'categoryprod_id':32})}}">Pâtisserie</a>
                           <a class="dropdown-item size_font " href="{{path('viennoiseries',{'categoryprod_id':34})}}">Viennoiserie</a>
@@ -40,10 +40,10 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle size_font " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font "  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Pause déjeuner
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu">
                           <a class="dropdown-item size_font" href="{{path('sandwichs',{'categoryprod_id':35})}}">Nos Sandwichs</a>
                           <a class="dropdown-item size_font " href="{{path('salades',{'categoryprod_id':36})}}">Nos Salades</a>
                           <a class="dropdown-item size_font " href="{{path('wraps',{'categoryprod_id':37})}}">Nos Wraps</a>
@@ -61,10 +61,10 @@
                    
                     <!-- Ajouter si admin et à true alors on affiche onglet admin -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle size_font " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle size_font "  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu">
                           <a class="dropdown-item size_font" href="{{path('admin_products')}}">Gestion produits</a>
                           <a class="dropdown-item size_font" href="{{path('admin_posts')}}">Gestion News</a>
                           <a class="dropdown-item size_font" href="">Gestion Introduction</a>

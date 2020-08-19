@@ -4,6 +4,7 @@
 {% block meta_des_content %}Une petite faim découvrez nos merveilleux wraps{% endblock %}
 
 {% block body %}
+<section>
     <div class="container mt-5 shadow-lg p-3 mb-5 bg-white rounded">  
         <h1 id="title_wrap" class="text-center text-light mt-5 bg-primary p-5">Découvrez nos wraps</h1>
         <div class="row">
@@ -16,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            <h2 class="text-center h4">{{product.name}}</h2>
+                            <p class="text-center h4">{{product.name}}</p>
                             <table class="table text-center">
                                 <tr>
                                     <td>Prix</td>
@@ -27,12 +28,12 @@
                                     <td>{{product.description}}</td>
                                 </tr>
                             </table>
-                            <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                            <p class="text-center colorpersopink">{{product.categoryprod.libelle}}</p>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
-
+</section>
 {% endblock %}

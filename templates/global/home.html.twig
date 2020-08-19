@@ -64,14 +64,12 @@
         <div id="test">
             <h4 class="last_actu text-center h1 pt-5 text-light">Dernière actualité</h4>
             {% for lastpost in lastposts %}
-            <article class=" mt-5 pb-5">
                 <p class="h4 mt-3 text-light title_actus">{{lastpost.title}}</p>
                 <div class="mb-2 text-secondary mb-2">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
                 <div class="mt-3">
                     <img id="image_actualite_home" class="p-2 mb-2 bg-white rounded center anim_actu" src="{{asset('images/products/' ~ lastpost.image)}}" style="width:35%" alt="Image de l'article">
                 </div>
                     <a href="{{path('show_post', {'id': lastpost.id})}}" class="btn bckgrdpersopink text-light mt-3"> Lire l'article</a>
-            </article>
             {% endfor %}
         </div>
     </section>  

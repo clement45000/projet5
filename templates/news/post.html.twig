@@ -13,27 +13,26 @@
     {% endfor %}
 
         <section> 
-            <div class="bg-primary p-4">
-                <h1 class="text-center text-light mt-5 post_title">{{post.title}}</h1> 
-                <p class="text-center text-light">Publié le : {{post.createAt | date('d/m/Y')}} </p>
+            <div class="bg-primary p-5">
+               <h1 class="text-center bg-primary text-light">Actualité</h1>
             </div>
-            
             <article class=" mt-2 mb-5"> 
+                <h2 class="text-center text-secondary mt-5 post_title">{{post.title}}</h2> 
+                <p class="text-center text-seconda">Publié le : {{post.createAt | date('d/m/Y')}} </p>
                 <div class="text-center container">
-                      <img id="img_post" class="shadow-lg p-2 mb-2 bg-white rounded center mt-5 " src="{{asset('images/products/' ~ post.image)}}" style="width:80%;" alt="Image de l'article">
+                    <img id="img_post" class="shadow-lg p-2 mb-2 bg-white rounded center mt-2 " src="{{asset('images/products/' ~ post.image)}}" style="width:80%;" alt="Image de l'article">
                 </div>      
                 <div class="h5 mt-5 text-center">{{post.content | raw}}</div>
             </article>
         </section>
 
-        <section>
+        <aside>
             <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
             
             {% for comment in post.comments %}
             <div class="text-center border border-bg-dark mt-2 pb-2 shadow-lg p-2 bg-white rounded">
                 <p class="mt-2 ml-2 mb-0"><span class="font-weight-bold">{{comment.author}} </span>a écrit le {{comment.createdAt | date('d/m/Y à H:i')}}</p> 
-                <p></p>
-                <p>{{comment.content | raw }}</p>
+                <div>{{comment.content | raw }}</div>
                 <form method="post" class="col" action="{{path('delete_comment',{'id' : comment.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
                     <input type="hidden" name="_method" value="DEL"> <!--Pour ne oas créer de collision entre les routes -->
                     <input type="hidden" name="_tokencomment" value="{{csrf_token('DEL' ~ comment.id)}}">
@@ -41,47 +40,19 @@
                 </form>
             </div>
             {% endfor %}
-        </section>
-{# 
-        <section class="mb-5">
+        </aside>
         
-            <p class="text-white text-center bg-primary h4 p-2">{{post.comments | length}} commentaires :</p>
-              {% for comment in post.comments %}
-              <div class="comment">
-                  <div class="row">
-                      <div class="col-3">
-                          {{comment.author}}  (<small>{{comment.createdAt | date
-                              ('d/m/Y à H:i')}}</small>)
-                             
-                      </div>
-                      <div class="col-7">
-                          {{comment.content | raw }}
-                          {{comment.id}}
-                       
-                      </div>
-                      <div class="col-2">
-                         
-                    <form method="post" class="col" action="{{path('delete_comment',{'id' : comment.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
-                        <input type="hidden" name="_method" value="DEL"> <!--Pour ne oas créer de collision entre les routes -->
-                        <input type="hidden" name="_tokencomment" value="{{csrf_token('DEL' ~ comment.id)}}">
-                        <input type="submit" class="btn btn-danger w-100" value="supprimer">
-                    </form>
-                    </div>
-                  </div> 
-                 
-              </div>
-           
-              {% endfor %} #}
+        <aside>
             <p class="text-white text-center bg-primary h4 p-2 mt-3">Laissez un commentaire</p>
             {{ form_start(commentForm, {'attr': {'novalidate' : 'novalidate'}})}}
             {{ form_row(commentForm.author, {"attr" : {'placeholder':'Entrez votre pseudo'},"label":"Pseudo"})}}
             {{ form_row(commentForm.content, {"attr" : {'placeholder':'Ecrivez votre commentaire'},"label":"Commentaire"})}}
-            <button type="submit" class="btn btn-primary">Commenter</button>
+            <button type="submit" class="btn bckgrdpersopink text-light">Commenter</button>
             {{form_end(commentForm)}}
 
             <div>
                 <p class="h5 text-center">Vous devez vous identifier pour laisser un commentaire.<a class="text-primary" href="#"> Se connecter</a> ou <a  class="text-primary" href="#">S'inscrire</a></p>
             </div>
-        </section>
+        </aside>
     </div>
 {% endblock %}

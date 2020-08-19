@@ -3,6 +3,7 @@
 {% block meta_des_name %}Nos Viennoiseries{% endblock %}
 {% block meta_des_content %}Découvrez nos Viennoiseries maison{% endblock %}
 {% block body %}
+<section>
     <div class="container p-3 mt-5 shadow-lg p-3 mb-5 bg-white rounded">
         <h1 id="title_viennoiserie" class="text-center text-light mt-5 bg-primary p-5">Découvrez nos viennoiseries</h1>
         <div class="row">
@@ -12,7 +13,7 @@
                     <div class="card-header text-center bg-primary">
                         <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
                     </div> 
-                    <h2 class="text-center mt-2 h4">{{product.name}}</h2>
+                    <p class="text-center mt-2 h4">{{product.name}}</p>
                     
                     <div class="card-body">
 
@@ -26,7 +27,7 @@
                                     <td>{{product.description}}</td>
                                 </tr>
                             </table>
-                            <p class="text-center text-primary">{{product.categoryprod.libelle}}</p>
+                            <p class="text-center colorpersopink">{{product.categoryprod.libelle}}</p>
                     </div>
                 </div>
             </div>
@@ -34,5 +35,5 @@
 
         </div>
     </div>    
-
+</section>
 {% endblock %}

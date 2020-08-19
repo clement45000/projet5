@@ -128,6 +128,11 @@ font-size: 3em;
     text-decoration: underline !important;
 }
 
+#iframe{
+    width:100% !important;
+    height: 450px !important;
+}
+
     /* -------------- RESPONSIVE ------------------ */
     /*  ---------------  Break point n° 1 ---------*/
 
