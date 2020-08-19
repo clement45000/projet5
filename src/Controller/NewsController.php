@@ -20,7 +20,6 @@ class NewsController extends AbstractController
      */
     public function index(PostRepository $repo,PaginatorInterface $paginatorInterface,Request $request)
     {
-        
         $posts = $paginatorInterface->paginate(
             $repo->findAllPostWithPagination(),  
             $request->query->getInt('page', 1), /*page number*/

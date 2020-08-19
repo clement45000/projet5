@@ -1,47 +1,32 @@
+/* -------------------------- GENERAL ---------------------- */
 body{   
 background-image: url("/images/caroussel/back.jpg");
-/* background-repeat:no-repeat; */
-/* background-size: cover; */
 }
-
 
 footer{
     background-color: rgb(8, 8, 8); 
     background-image: url("/images/caroussel/shattered.png");
 }   
 
+/* background perso*/
+.bckgrdpersoblack{background-color:black;}
+.bckgrdpersopink{background-color:rgb(245, 21, 140);}
+.bckgrdpersogrey{background-color:rgb(184, 180, 180);}
 
-/* Home
- #background_section{
-    background-color: rgb(69, 66, 78); 
-    background-image: url("/images/background/back5.jpg");
-    background-size: cover;
-}  */
+/* color perso*/
+.colorpersoblack{color:black;}
+.colorpersopink{color:rgb(245, 21, 140);}
 
-/*Home*/
 .text_shadow
 {
 font-size: 3em;
 }
 
-/*home*/
-#intro
-{
-    position:absolute;
-    margin-top: -30%;
-    left:10%;
-    z-index: 2;
+.size_font{
+    font-size: 1.0em !important;
 }
 
-#diapo{
-position: relative;
-z-index: 2;
-}
-
-/* #section_trois{   
-    background-image: url("/images/caroussel/gateauchoco.jpg");
-}  */
-
+/* Redimension d'image */
 .resizing_image
 {
     width:200px;
@@ -50,11 +35,464 @@ z-index: 2;
     object-fit:cover;
 }
 
-.size_font{
-font-size: 1.0em !important;
+/* ------------ HOME (Page d'accueil) --------------- */
+
+#intro
+{
+    position:absolute;
+    margin-top: -30%;
+    left:10%;
+    z-index: 2;
+}
+
+#titre_introduction{
+    font-size: 3.9em;
+    font-weight:bold;
+    }
+
+#diapo
+{
+    position: relative;
+    z-index: 2;
+}
+
+#titre_plus_infos{
+    
+    background-color:rgba(5, 144, 236, 0.753);
+    width: 350px;
+    margin: auto;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.rotate, .img_infos {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 50px 0px 50px 0px;
+    border: 2px solid black;
+    width: 250px;
+}
+
+.rotate, .img_infos:hover{
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
+  }
+
+.rotate, .anim_actu {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.rotate, .anim_actu:hover{
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
+}
+
+#image_actualite{
+    box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.87) !important; 
+}
+
+/* btn header*/
+#btn_intro{
+    margin-top:10px;
+    font-size:1.0em;
+    padding: 10px;
+}
+
+.btn_plus_infos{
+    margin-top:10px;
+    font-size:1.0em;
+    padding: 10px; 
 }
 
 
-.bckgrdpersoblack{background-color:black;}
-.bckgrdpersopink{background-color:rgb(245, 21, 140);}
-.bckgrdpersogrey{background-color:rgb(184, 180, 180);}
+
+/*  --------- API METEO --------------- */
+
+#erreur{
+    display: none;
+}
+
+#error_number
+{
+    display: none;
+}
+
+#data_weather 
+{
+    display:none;
+} 
+
+/*  ---------------- NOUS SITUER ------------ */
+.title_h2_nous_situer
+{
+    text-decoration: underline !important;
+}
+
+    /* -------------- RESPONSIVE ------------------ */
+    /*  ---------------  Break point n° 1 ---------*/
+
+    @media all and  (max-width: 1400px){
+        /*---------- HOME ------------ */
+        #titre_introduction{
+            font-size: 3.0em;
+        }
+
+        #intro
+        {
+            left:2%;
+        }
+
+        .img_infos{
+          width: 200px;
+        }
+        
+
+    }
+
+    /*  ---------------  Break point n° 2 ---------*/
+    @media all and  (max-width: 1000px)
+    {
+     /*  ----------------- HOME ------------------- */   
+        #intro
+        {
+            left:3%;
+        }        
+
+        #diapo
+        {
+            position: relative;
+            z-index: 2;
+        }
+
+        #image_actualite_home{
+            width : 50% !important;
+        }
+        /* --------- NOS ACTUALITES -------------- */
+        .img_nosactus{
+            width: 70% !important;
+        }
+
+        .pagination_produits{
+            margin-left: 25% !important;
+        }
+        
+
+
+    }
+
+    /*  ---------------  Break point n° 3 ---------*/
+    @media all and  (max-width: 870px)
+    {
+     /*  ----------------- HOME ------------------- */      
+        #titre_introduction{
+            color:white !important;
+        }
+            
+        #diapo{
+            display: none !important;
+        }
+
+        #intro
+        {
+            height: 400px;
+            padding-top: 120px;
+            padding-bottom: 20px;
+            position:static;
+            margin-top:0%;
+            background-color:rgba(7, 7, 7, 0.479);
+            color: white;
+        }
+
+        #image_actualite_home{
+            width : 60% !important;
+        }
+
+        /* ----------  NOS ACTUALITE ----------------- */
+        .img_nosactus{
+            width: 80% !important;
+        }
+
+        .pagination_produits{
+            margin-left: 18% !important;
+        }
+
+        /* ----------- POST ------------ */
+          
+    }
+
+    @media all and  (max-width: 767px){
+        /* ----- NOS ACTUALITES --------- */
+        #nav_actus_bottom{
+            padding-left : 20% !important;
+        }
+
+        #nav_actus_top{
+            padding-left : 20% !important;
+        }
+        /* --------- ALL PRODUCTS -------- */
+        .pagination_produits{
+            margin-left: 10% !important;
+        }
+
+        /* ------- POST ----- */
+
+        #img_post{
+            width: 100% !important;
+        }
+
+        .post_title{
+            margin-top: 10px !important;
+            padding-top: 10px;
+        }
+      
+    }
+    
+
+    @media all and  (max-width: 580px){
+    /*  ---------------  Break point n° 4 ---------*/
+     /*  --------- HOME ------------------- */    
+        #intro
+        {
+            height: 400px;
+            padding-top: 100px;
+            padding-bottom: 20px;
+            padding-left:15px;
+            padding-right: 15px;
+        }   
+
+        #titre_introduction{
+            font-size: 2.6em;
+        }
+
+        
+        #btn_intro{
+            font-size: 0.9em;
+            padding: 7px;
+        }
+
+        #accroche_intro{
+            font-size: 1.5em;   
+        }
+
+        #title_qui
+        {
+            font-size: 1.8em;
+        }
+
+        #titre_plus_infos{
+    
+            background-color:rgba(5, 144, 236, 0.753);
+            width: 290px;
+            margin: auto;
+            border-radius: 30px 30px 30px 30px;
+        }
+        
+        .title_information{
+            font-size: 2.0em;
+        }
+
+        .title_infonav{
+            font-size: 1.2em;
+        }
+
+        .btn_plus_infos{
+            font-size:0.9em;
+            padding: 7px; 
+        }
+
+        .last_actu{
+            font-size: 2.1em;
+        }
+
+        .title_actus{
+            font-size: 1.3em;
+        }
+
+        .pagination_produits{
+            margin-left: 3% !important;
+            padding-left: 3% !important;
+        }
+
+        .pagination_produits ul{
+            font-size :0.6em;
+        }
+
+
+        /* --------- NOS ACTUALITE ------------ */
+       
+        
+    }
+
+    /*  ---------------  Break point n° 5 ---------*/
+    @media all and  (max-width: 400px){
+    /*  ----------------- HOME ------------------- */       
+        #intro
+        {
+            height: 380px;
+            padding-top: 85px;
+            padding-left:15px;
+            padding-right: 15px;
+            padding-bottom: 20px;
+        }   
+
+        #titre_introduction{
+            font-size: 2.5em;
+        }
+
+        #image_actualite_home{
+            width : 70% !important;
+        }
+
+        .text_presentation{
+            font-size: 1.3em;
+            margin-top: -20px;
+        }
+    /* -------------- BOULANGERIE ------------------ */
+         #title_boulangerie{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 40px !important;
+            padding-right : 40px !important;
+         }
+
+     /* -------------- BOULANGERIE ------------------ */
+         #title_patisserie{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 40px !important;
+            padding-right : 40px !important;
+        }
+
+        #title_viennoiserie{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+
+         #title_allproducts{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+
+        #title_sandwichs{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+
+        #title_salade{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+
+        #title_wrap{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+            padding-bottom : 50px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+        
+        /* ----------- NOS ACTUALITE ------------ */
+        .img_nosactus{
+            width: 85% !important;
+        }
+
+        #nos_actualite_h1{
+            font-size: 1.9em;
+            margin-top: 10px !important;
+            padding-top : 50px !important;
+        }
+
+        .nos_actus_title{
+            font-size: 1.4em;
+        }
+
+        #nav_actus_bottom{
+            padding-left : 5% !important;  
+        }
+
+        #nav_actus_top{
+            padding-left : 5% !important;
+        }
+        
+        .pagination_produits ul{
+            font-size :0.4em;
+            padding-left: -15px !important;
+            margin-left: -30px !important;
+        }
+
+        /* ------- POST ----------- */
+        .post_title{
+            font-size: 1.5em;
+            margin-top: 5px !important;
+            padding-top : 20px !important;
+            padding-bottom : 5px !important;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+        }
+
+        /* -------- API METEO ---------- */
+        .title_meteo{
+            font-size: 1.9em;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+            margin-top: 5px !important;
+        }
+
+        .input_meteo{
+            width: 100px;
+        }
+
+        .btn_padd{
+            font-size: 0.7em !important;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .size_weather{
+            font-size: 1.3em !important;
+        }
+
+        /* ---------- NOUS SITUER ------------ */
+        .title_nous_situer{
+            font-size: 1.9em;
+            padding-left : 5px !important;
+            padding-right : 5px !important;
+            margin-top: 5px !important;
+        }
+
+        .font_nous_situer{
+            font-size: 1.3em;
+          
+        }
+
+        .title_h2_nous_situer{
+            font-size: 1.8em;
+        }
+
+        /* -------- FOOTER --------- */
+        .font_footer{
+            font-size: 1.8em;
+        }
+       
+    }

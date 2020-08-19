@@ -32,9 +32,14 @@ class ProductsController extends AbstractController
     public function boulangerie(ProductRepository $repository,$categoryprod_id)
     {
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/boulangeries.html.twig', [
-            'products' => $products,
-        ]);
+        if($categoryprod_id !== '33' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+            return $this->render('products/boulangeries.html.twig', [
+                'products' => $products,
+            ]);
+        }
     }
 
     /**
@@ -43,9 +48,15 @@ class ProductsController extends AbstractController
     public function patisseries(ProductRepository $repository,$categoryprod_id)
     {
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/patisseries.html.twig', [
+        if($categoryprod_id !== '32' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+            return $this->render('products/patisseries.html.twig', [
             'products' => $products,
         ]);
+        }
+       
     }
 
      /**
@@ -54,9 +65,16 @@ class ProductsController extends AbstractController
     public function viennoiserie(ProductRepository $repository,$categoryprod_id)
     {
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/viennoiseries.html.twig', [
-            'products' => $products,
-        ]);
+        if($categoryprod_id !== '34' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+
+            return $this->render('products/viennoiseries.html.twig', [
+                'products' => $products,
+            ]);  
+        }
+        
     }
 
      /**
@@ -65,9 +83,15 @@ class ProductsController extends AbstractController
     public function sandwich(ProductRepository $repository,$categoryprod_id)
     {
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/sandwichs.html.twig', [
-            'products' => $products,
-        ]);
+        if($categoryprod_id !== '35' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+            return $this->render('products/sandwichs.html.twig', [
+                'products' => $products,
+            ]);    
+        }
+        
     }
 
      /**
@@ -76,19 +100,29 @@ class ProductsController extends AbstractController
     public function salade(ProductRepository $repository,$categoryprod_id)
     {
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/salades.html.twig', [
+        if($categoryprod_id !== '36' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+            return $this->render('products/salades.html.twig', [
             'products' => $products,
-        ]);
+             ]);
+        }
     }
 
     /**
      * @Route("/client/products/wrap/{categoryprod_id}", name="wraps")
      */
     public function wrap(ProductRepository $repository,$categoryprod_id)
-    {
+    {   
         $products = $repository->getProductById($categoryprod_id);
-        return $this->render('products/wraps.html.twig', [
-            'products' => $products,
-        ]);
+        if($categoryprod_id !== '37' ){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+            ]);
+        }else{
+            return $this->render('products/wraps.html.twig', [
+                'products' => $products,
+            ]);
+        }
     }
 }

@@ -6,28 +6,28 @@
 <!-- header photo -->
     <header>
         <div id="diapo" class="shadow-lg bg-white rounded">
-            <img src="{{asset('images/caroussel/macarons_color.jpg')}}" class="d-block w-100"  alt="image de macarons">
+            <img id="img_header" src="{{asset('images/caroussel/macarons_color.jpg')}}" class="d-block w-100"  alt="image de macarons">
         </div>          
 
               <!-- Accroche  -->
         <div class="text-center" id="intro">
-            <h1 class="text-light h1">Boulangerie-Pâtisserie-Kockt</h1>
-            <p class="h3">Nous vous souhaitons la bienvenue</p>
-            <a class="btn bckgrdpersopink text-light " href="{{path('products')}}">Voir nos produits</a>
+            <h1 id="titre_introduction" class="text-light">Boulangerie-Pâtisserie-Kock</h1>
+            <p id="accroche_intro" class="h3 text-light">Nous vous souhaitons la bienvenue</p>
+            <a id="btn_intro" class="btn bckgrdpersopink text-light btn_intro" href="{{path('products')}}">Voir nos produits</a>
         </div>
     </header>
    
     <section class="bg-light pb-2">
        <!-- A propos de l'Entreprise -->
         <div  class="container pb-5">
-            <h2 class="text-center text-secondary h1 pt-4 pb-5">Qui sommes nous ?</h2>
+            <h2 id="title_qui" class="text-center colorpersoblack h1 pt-4 pb-5">Qui sommes nous ?</h2>
             <div class="text-center">
             {# <img class="shadow-lg p-2 mb-2 bg-white rounded center" src="{{asset('images/divers/jpsabine.jpeg')}}" style="width:80%" alt="Image de l'article"> #}
             </div>
-            <p class="h4  text-center text-muted"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
+            <p class="h4  text-center text-muted text_presentation"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
             Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
             </p> 
-            <p class="h4 mt-5 text-center text-muted"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
+            <p class="h4 mt-5 text-center text-muted text_presentation"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam consectetur in perspiciatis assumenda, necessitatibus, veniam, quae laboriosam deserunt quod omnis provident enim. Dignissimos commodi aspernatur non ab maiores voluptatem aliquam!
             Incidunt culpa ea nemo corporis officiis enim ad odit ut commodi at doloribus officia iste a perferendis explicabo nihil laboriosam, natus recusandae dolor tempora harum et eum aliquam unde? Cumque.
             </p>  
         </div>
@@ -36,38 +36,39 @@
 
     <section>
       <!-- section du site (Produits article contact)  -->
-      <div class="container  pb-5">
-          <h3 class="text-center text-light h1  pt-5 text_shadow">Plus d'infos</h3>
-          <p class="text-center text-white h4">Bonne navigation</p>
-          <div class="row text-center">
+      <div class="container pb-5">
+        <div id="titre_plus_infos" class="pb-3 mt-5">
+            <h3 class="text-center text-light h1 pt-3 text_shadow title_information">Plus d'infos</h3>
+            <p class="text-center text-white h4 title_infonav">Bonne navigation</p>
+        </div>
+
+        <div class="row text-center mt-5">
               <div class="col">
-                  <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/news.png')}}" alt="image d'un journal">
-                  <div><a class="btn bckgrdpersopink text-light" href="{{path('show_posts')}}">Nos publications</a></div>
+                  <img class="img_infos mt-5 mb-3 bg-white p-3" src="{{asset('images/icones/news.png')}}" alt="image d'un journal">
+                  <div><a class="btn bckgrdpersopink text-light btn_plus_infos" href="{{path('show_posts')}}">Nos publications</a></div>
               </div>
               <div class="col">
-                  <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/croissant.png')}}" alt="icone d'un croissant">
-                  <div><a class="btn bckgrdpersopink text-light" href="{{path('products')}}">Nos produits</a></div>
+                  <img class="img_infos mt-5 mb-3 bg-white p-3" src="{{asset('images/icones/croissant.png')}}" alt="icone d'un croissant">
+                  <div><a class="btn bckgrdpersopink text-light btn_plus_infos " href="{{path('products')}}">Nos produits</a></div>
               </div>
               <div class="col">
-                  <img class="border border-primary shadow p-3 mb-5 bg-white rounded mt-5" src="{{asset('images/icones/contact.png')}}" alt="icone contact">
-                  <div><a class="btn bckgrdpersopink text-light" href="{{path('contact')}}">Nous contacter</a></div>
+                  <img class="img_infos mt-5 mb-3 bg-white p-3"  src="{{asset('images/icones/contact.png')}}" alt="icone contact">
+                  <div><a class="btn bckgrdpersopink text-light btn_plus_infos" href="{{path('contact')}}">Nous situer</a></div>
               </div>
-          </div>
+        </div>
       </div>
     </section>
    
-     
-
           <!-- Encart sur la dernière actualité -->
     <section class="text-center bckgrdpersoblack">     
         <div id="test">
-            <h4 class="text-center h1 pt-5 text-light">Dernière actualité</h4>
+            <h4 class="last_actu text-center h1 pt-5 text-light">Dernière actualité</h4>
             {% for lastpost in lastposts %}
             <article class=" mt-5 pb-5">
-                <p class="h4 mt-3 text-light">{{lastpost.title}}</p>
+                <p class="h4 mt-3 text-light title_actus">{{lastpost.title}}</p>
                 <div class="mb-2 text-secondary mb-2">Ecrit le : {{ lastpost.createAt | date('d/m/Y')}}</div>
                 <div class="mt-3">
-                    <img class="shadow-lg p-2 mb-2 bg-white rounded center" src="{{asset('images/products/' ~ lastpost.image)}}" style="width:35%" alt="Image de l'article">
+                    <img id="image_actualite_home" class="p-2 mb-2 bg-white rounded center anim_actu" src="{{asset('images/products/' ~ lastpost.image)}}" style="width:35%" alt="Image de l'article">
                 </div>
                     <a href="{{path('show_post', {'id': lastpost.id})}}" class="btn bckgrdpersopink text-light mt-3"> Lire l'article</a>
             </article>

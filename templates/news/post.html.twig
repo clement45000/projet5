@@ -14,13 +14,13 @@
 
         <section> 
             <div class="bg-primary p-4">
-                <h1 class="text-center text-light mt-5">{{post.title}}</h1> 
+                <h1 class="text-center text-light mt-5 post_title">{{post.title}}</h1> 
                 <p class="text-center text-light">Publié le : {{post.createAt | date('d/m/Y')}} </p>
             </div>
             
             <article class=" mt-2 mb-5"> 
                 <div class="text-center container">
-                      <img class="shadow-lg p-4 mb-2 bg-white rounded center mt-5" src="{{asset('images/products/' ~ post.image)}}" style="width:80%; height:30%;" alt="Image de l'article">
+                      <img id="img_post" class="shadow-lg p-2 mb-2 bg-white rounded center mt-5 " src="{{asset('images/products/' ~ post.image)}}" style="width:80%;" alt="Image de l'article">
                 </div>      
                 <div class="h5 mt-5 text-center">{{post.content | raw}}</div>
             </article>

@@ -4,7 +4,7 @@
 {% block meta_des_content %}Découvrez nos atualités{% endblock %}
 {% block body %}
     <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded border border-primary">
-        <h1 class="text-center text-light mt-5 bg-primary p-5 h1 ">Nos actualités</h1>
+        <h1 id="nos_actualite_h1" class="text-center text-light mt-5 bg-primary p-5 h1 ">Nos actualités</h1>
         {% for message in app.flashes('success') %}
         <div class="text-center alert alert-success">
             {{message}}
@@ -15,20 +15,20 @@
         <a href="{{path('add_post')}}" class="text-center col btn btn-info">Ajouter un article</a>
          {% endif %}
         <section class="">
-            <div class="navigation col-md-4 offset-md-4 mt-5">
+            <div id="nav_actus_top" class="navigation col-md-4 offset-md-4 mt-5">
                 {{ knp_pagination_render(posts) }}
             </div>
             {% for post in posts %}
-            <article class=" mt-5 mb-5 text-center">
-                <h2 class="h2 mt-5 text-shadow ont-weight-bold">{{post.title}}</h2>
+            <article class="mt-5 mb-5 text-center">
+                <p class="h2 mt-5 text-shadow ont-weight-bold nos_actus_title">{{post.title}}</p>
                 
                 <div class="text-secondary">Ecrit le : {{ post.createAt | date('d/m/Y')}} 
                 <div class="mt-3">
-                    <img class="shadow-lg p-2 mb-2 bg-white rounded center" src="{{asset('images/products/' ~ post.image)}}" style="width:50%" alt="Image de l'article">
+                    <img class="shadow-lg p-2 mb-2 bg-white rounded center img_nosactus" src="{{asset('images/products/' ~ post.image)}}" style="width:50%" alt="Image de l'article">
                 </div>
-                <a href="{{path('show_post', {'id': post.id})}}" class="btn bckgrdpersopink text-light mb-4 mt-4 mb-5"> Lire l'article</a>
+                <a href="{{path('show_post', {'id': post.id})}}" class="btn bckgrdpersopink text-light  mt-4 btn_lire_article"> Lire l'article</a>
                 {% if admin %}
-                <div class="row no-gutters">
+                <div class="row no-gutters mt-5">
                     <!-- lien pour la modif d'un article -->
                     <a href="{{path('update_post',{'id': post.id})}}" class="col btn btn-warning mr-2">Modifier</a>
                    
@@ -43,7 +43,7 @@
             <hr class="bg-primary">
             {% endfor %}
         </section>
-        <div class="navigation col-md-4 offset-md-4 mt-3">
+        <div id="nav_actus_bottom" class="navigation col-md-4 offset-md-4 mt-3">
             {{ knp_pagination_render(posts) }}
         </div>
     </div>

@@ -4,18 +4,35 @@
 {% block monTitre %}Météo{% endblock %}
 
 {% block body %}
-<section>
-    <div class="container  mt-5 shadow p-5 mb-5 bg-white rounded"> 
-        <h1 class="text-center mt-5">Rechercher la météo actuelle</h1>
-            <div class="text-center mt-5" id="info_weather">
-              <!--  <p><span>Message d'erreur</span><p> -->
-                <p class="h4">Entrez une ville</p>
-                <input class="mt-4" type="text" name="city" id="enter_town" value="" placeholder="Exemple : Paris">
-                <input class="btn btn-secondary" type="button" value="Afficher la metéo" id="get_weather">
-                <p class="h3 mt-4"> Ville : <span id="ville"> </span></p>
-                <p class="h3 mt-4"> Température actuelle : <span id="temperature"></span>° C</p>
-                <p class="h3 mt-4 pb-5"> Condition : <span id="conditions"> </span></p>
-            </div>
+<section class="mb-5 mt-5">
+
+    <div class="container bg-light shadow pt-3"> 
+        <h1 class="text-center text-light mt-5 bg-primary p-5 title_meteo">Notre application Météo</h1>
+        <h2 class="text-center mt-5 pt-5">Rechercher la météo actuelle</h2>
+                <div class="text-center mt-5" id="info_weather">
+
+                      <div class="alert alert-danger" id="erreur" >
+                            <span> Désolé cette ville n'est pas répertoriée, veuillez saisir une ville dans les alentours</span>
+                      </div>
+
+                      <div class="alert alert-danger" id="error_number">
+                            <span>Désolé les chiffres ne sont pas une valeur correct</span>
+                      </div>
+                      <!--  <p><span>Message d'erreur</span><p> -->
+                  
+                      <p class="h4">Entrez une ville</p>
+
+                      <div class="pb-5">
+                          <input class="mt-4 input_meteo" type="text" name="city" id="enter_town" value="" placeholder="Exemple : Paris">
+                          <input class="btn btn-secondary btn_padd" type="button" value="Afficher la metéo" id="get_weather">
+                      </div>
+
+                      <div id="data_weather" >
+                          <p id="ville_p" class="h3 mt-4 size_weather"> Ville : <span id="ville"> </span></p>
+                          <p id="temp_p" class="h3 mt-4 size_weather"> Température actuelle : <span id="temperature"> </span>° C</p>
+                          <p id="cond_p" class="h3 mt-4 pb-5 size_weather"> Condition : <span id="conditions"> </span></p>
+                      </div>
+                </div>    
     </div>
 </section>
 

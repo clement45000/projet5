@@ -6,8 +6,8 @@
 
 
 <section>
-    <div class="container p-5 mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <h1 class="text-center text-light mt-5 bg-primary p-5 ">Découvrez tout nos produits</h1>
+    <div class="container p-3 mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+            <h1 id="title_allproducts" class="text-center text-light mt-5 bg-primary p-5 ">Découvrez tout nos produits</h1>
             {% for message in app.flashes('success') %}
             <div class="text-center alert alert-success">
                 {{message}}
@@ -19,7 +19,7 @@
              <a href="{{path('add_product')}}" class="text-center col btn btn-info">Ajouter un produit</a>
             <!-- Fin de la condition -->
             {% endif %}
-            <div class="navigation col-md-4 offset-md-4 mt-4">
+            <div class="navigation col-md-4 offset-md-4 mt-4 pagination_produits">
                 {{ knp_pagination_render(products) }}
             </div>
      
@@ -32,7 +32,7 @@
                         </div> 
     
                         <div class="card-body"> 
-                            <h3 class="card-text text-center h5">{{product.name}}</h3>  
+                            <h2 class="card-text text-center h4">{{product.name}}</h2>  
                             <table class="table text-center">
                                 <tr>
                                     <td>Prix</td>
@@ -63,7 +63,7 @@
                 </div> <!-- div du col -->
                 {% endfor %}
             
-                <div class="navigation col-md-4 offset-md-4 mt-3">
+                <div class="navigation col-md-4 offset-md-4 mt-3 pagination_produits">
                     {{ knp_pagination_render(products) }}
                 </div>
             </div><!-- div du class row -->
