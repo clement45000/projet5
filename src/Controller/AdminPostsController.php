@@ -6,6 +6,7 @@ use DateTime;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -33,8 +34,8 @@ class AdminPostsController extends AbstractController
     }
 
      /**
-      * @Route("/admin/article/addpost", name="add_post")
-      * @Route("/admin/article/{id}", name="update_post", methods="GET|POST")
+      * @Route("/admin/articlemodif/addpost", name="add_post")
+      * @Route("/admin/articlemodif/{id}", name="update_post", methods="GET|POST")
       */
      public function createAndUpdatePost(Post $post =null, Request $request, EntityManagerInterface $em)
      {
@@ -72,8 +73,9 @@ class AdminPostsController extends AbstractController
             return $this->redirectToRoute("admin_posts");
         }
     }
+
     /**
-     * @Route("/admin/article/{id}", name="delete_comment", methods="DEL")
+     * @Route("/admin/comment/{id}", name="delete_comment", methods="DEL")
      */
     public function deleteComment(Comment $comment, Request $request, EntityManagerInterface $em){
         if($this->isCsrfTokenValid("DEL". $comment->getId(),$request->get('_tokencomment'))){
@@ -82,6 +84,34 @@ class AdminPostsController extends AbstractController
             $this->addFlash("success","La suppression du commentaire a été effectué");
             return $this->redirectToRoute("admin_posts");
         }
-        
-    }   
+    } 
+
+     /**
+     * @Route("/admin/article/{id}", name="show_post_admin")
+     */
+    public function showPost(Post $post, Request $request,EntityManagerInterface $em)
+    {
+        $comment = new Comment();
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $comment->setCreatedAt(new \DateTime())
+                    ->setPost($post);
+
+            $em->persist($comment);
+            $em->flush();
+
+        $this->addFlash("success","Votre commentaire a été ajouté");    
+        return $this->redirectToRoute('show_post', ['id' => $post->getId()]);    
+        }
+
+        return $this->render('news/post.html.twig', [
+            'post' => $post,
+            "admin" =>true,
+            'commentForm' => $form->createView()
+        ]);
+    }
+    
+    
 }

@@ -52,13 +52,15 @@
                     <li class="nav-item">
                         <a class="nav-link size_font " href="{{path('show_posts')}}">Actualités</a>
                     </li>
+                    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
                      <li class="nav-item">
                         <a class="nav-link size_font" href="{{path('weather')}}">Météo</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link size_font" href="{{path('contact')}}">Nous situer</a>
                     </li>
-                   
+                    {% if is_granted('ROLE_ADMIN')%}
                     <!-- Ajouter si admin et à true alors on affiche onglet admin -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle size_font "  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,14 +69,18 @@
                         <div class="dropdown-menu">
                           <a class="dropdown-item size_font" href="{{path('admin_products')}}">Gestion produits</a>
                           <a class="dropdown-item size_font" href="{{path('admin_posts')}}">Gestion News</a>
-                          <a class="dropdown-item size_font" href="">Gestion Introduction</a>
                         </div>
                     </li>
+                    {% endif %}
                     <!-- Fin de la condition de l'admin -->
                 </ul>
-                <a class="nav-link text-light size_font" href="">S'inscrire</a>
-                <a class="nav-link text-light size_font" href="">Se connecter</a>
-                <!-- <a class="nav-link text-light size_font" href="">Deconnexion</a> -->
+                {% if not app.user %}
+                <a class="nav-link text-light size_font" href="{{path('register')}}">S'inscrire</a>
+                <a class="nav-link text-light size_font" href="{{path('login')}}">Se connecter</a>
+                {% else %}
+                <span class="text-light">(Vous êtes connecté)</span>
+                <a class="nav-link text-light size_font" href="{{path('logout')}}">Se déconnecter</a> 
+                {% endif %}
             </div>
           </nav>
         

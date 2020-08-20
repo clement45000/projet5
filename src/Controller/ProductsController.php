@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductsController extends AbstractController
 {
     /**
-     * @Route("/client/products", name="products")
+     * @Route("/products", name="products")
      */
     public function index(ProductRepository $repository,PaginatorInterface $paginatorInterface, Request $request)
     {
@@ -27,7 +27,7 @@ class ProductsController extends AbstractController
     }
 
     /**
-     * @Route("/client/products/boulangerie/{categoryprod_id}", name="boulangeries")
+     * @Route("/products/boulangerie/{categoryprod_id}", name="boulangeries")
      */
     public function boulangerie(ProductRepository $repository,$categoryprod_id)
     {
@@ -43,7 +43,7 @@ class ProductsController extends AbstractController
     }
 
     /**
-     * @Route("/client/products/patisserie/{categoryprod_id}", name="patisseries")
+     * @Route("/products/patisserie/{categoryprod_id}", name="patisseries")
      */
     public function patisseries(ProductRepository $repository,$categoryprod_id)
     {
@@ -60,7 +60,7 @@ class ProductsController extends AbstractController
     }
 
      /**
-     * @Route("/client/products/viennoiserie/{categoryprod_id}", name="viennoiseries")
+     * @Route("/products/viennoiserie/{categoryprod_id}", name="viennoiseries")
      */
     public function viennoiserie(ProductRepository $repository,$categoryprod_id)
     {
@@ -78,7 +78,7 @@ class ProductsController extends AbstractController
     }
 
      /**
-     * @Route("/client/products/sandwich/{categoryprod_id}", name="sandwichs")
+     * @Route("/products/sandwich/{categoryprod_id}", name="sandwichs")
      */
     public function sandwich(ProductRepository $repository,$categoryprod_id)
     {
@@ -95,7 +95,7 @@ class ProductsController extends AbstractController
     }
 
      /**
-     * @Route("/client/products/salade/{categoryprod_id}", name="salades")
+     * @Route("/products/salade/{categoryprod_id}", name="salades")
      */
     public function salade(ProductRepository $repository,$categoryprod_id)
     {
@@ -111,7 +111,7 @@ class ProductsController extends AbstractController
     }
 
     /**
-     * @Route("/client/products/wrap/{categoryprod_id}", name="wraps")
+     * @Route("/products/wrap/{categoryprod_id}", name="wraps")
      */
     public function wrap(ProductRepository $repository,$categoryprod_id)
     {   

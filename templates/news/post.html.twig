@@ -33,15 +33,17 @@
             <div class="text-center border border-bg-dark mt-2 pb-2 shadow-lg p-2 bg-white rounded">
                 <p class="mt-2 ml-2 mb-0"><span class="font-weight-bold">{{comment.author}} </span>a écrit le {{comment.createdAt | date('d/m/Y à H:i')}}</p> 
                 <div>{{comment.content | raw }}</div>
+                {% if admin %}
                 <form method="post" class="col" action="{{path('delete_comment',{'id' : comment.id})}}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?')">
                     <input type="hidden" name="_method" value="DEL"> <!--Pour ne oas créer de collision entre les routes -->
                     <input type="hidden" name="_tokencomment" value="{{csrf_token('DEL' ~ comment.id)}}">
                     <input type="submit" class="btn btn-danger mb-3" value="supprimer le commentaire">
                 </form>
+                {% endif %}
             </div>
             {% endfor %}
         </aside>
-        
+        {% if app.user %}
         <aside>
             <p class="text-white text-center bg-primary h4 p-2 mt-3">Laissez un commentaire</p>
             {{ form_start(commentForm, {'attr': {'novalidate' : 'novalidate'}})}}
@@ -49,10 +51,11 @@
             {{ form_row(commentForm.content, {"attr" : {'placeholder':'Ecrivez votre commentaire'},"label":"Commentaire"})}}
             <button type="submit" class="btn bckgrdpersopink text-light">Commenter</button>
             {{form_end(commentForm)}}
-
+        </aside>   
+        {% else %} 
             <div>
-                <p class="h5 text-center">Vous devez vous identifier pour laisser un commentaire.<a class="text-primary" href="#"> Se connecter</a> ou <a  class="text-primary" href="#">S'inscrire</a></p>
+                <p class="h5 text-center mt-4 mb-2">Vous devez vous identifier pour laisser un commentaire.<a class="colorpersopink" href="{{path('login')}}"> Se connecter</a> ou <a  class="colorpersopink" href="{{path('register')}}">S'inscrire</a></p>
             </div>
-        </aside>
+        {% endif %}
     </div>
 {% endblock %}

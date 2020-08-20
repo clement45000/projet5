@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+
+
 use App\Entity\Post;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\PostRepository;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NewsController extends AbstractController
 {
     /**
-     * @Route("/client/article", name="show_posts")
+     * @Route("/article", name="show_posts")
      */
     public function index(PostRepository $repo,PaginatorInterface $paginatorInterface,Request $request)
     {
@@ -25,7 +26,6 @@ class NewsController extends AbstractController
             $request->query->getInt('page', 1), /*page number*/
             3 /*limit per page*/
         );
-       // $posts = $repo->findBy([],['id'=>'DESC']);
         return $this->render('news/news.html.twig', [
             'posts' => $posts,
             "admin" =>false
@@ -33,7 +33,7 @@ class NewsController extends AbstractController
     }
 
      /**
-     * @Route("/client/article/{id}", name="show_post")
+     * @Route("/article/{id}", name="show_post")
      */
     public function showPost(Post $post, Request $request,EntityManagerInterface $em)
     {
@@ -54,6 +54,7 @@ class NewsController extends AbstractController
 
         return $this->render('news/post.html.twig', [
             'post' => $post,
+            "admin" =>false,
             'commentForm' => $form->createView()
         ]);
     }
