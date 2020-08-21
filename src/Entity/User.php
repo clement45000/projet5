@@ -37,25 +37,17 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\EqualTo(propertyPath="verifPassword",message="Les 2 mots de passe doivent correspondre")
+     * @Assert\NotBlank(message="Vous devez remplir ce champs")
+     * @Assert\Length(min=4, minMessage="Votre pseudo doit comporter au moins 5 caractères")
      */
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="password",message="Les 2 mots de passe doivent correspondre")
-     */
-    private $verifPassword;
-
-    /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^[a-z0-9-_.]+@[a-z0-9-_.]+\.[a-z]{2,3}$/i")
      * @Assert\NotBlank(message="Vous devez remplir ce champs")
      */
     private $mail;
-
-    /**
-     * @Assert\EqualTo(propertyPath="mail",message="Les 2 adresses doivent correspondre")
-     */
-    private $verifMail;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -91,17 +83,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getVerifPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setVerifPassword(string $verifPassword): self
-    {
-        $this->verifPassword = $verifPassword;
-
-        return $this;
-    }
 
     public function getMail(): ?string
     {
@@ -115,17 +96,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getVerifMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    public function setVerifMail(string $verifMail): self
-    {
-        $this->verifMail = $verifMail;
-
-        return $this;
-    }
 
     public function getRoles()
     {

@@ -3,37 +3,38 @@
 {% block meta_des_content %}Venez admirer nos pains et produits maison{% endblock %}
 {% block title %}Boulangerie{% endblock %}
 {% block body %}
-<section>
-    <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
-        <h1 id="title_boulangerie" class="text-center text-light mt-5 bg-primary p-5">Découvrez notre Boulangerie</h1>
-        <div class="row">
-            {% for product in products %}
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5">
-                <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
-                    <div class="card-header text-center bg-primary">
-                        <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
-                    </div> 
-                    <p class="text-center mt-2 h4">{{product.name}}</p>
-                    
-                    <div class="card-body">
 
-                            <table class="table text-center">
-                                <tr>
-                                    <td>Prix</td>
-                                    <td>{{product.price}} euros</td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td>{{product.description}}</td>
-                                </tr>
-                            </table>
-                            <p class="text-center colorpersopink">{{product.categoryprod.libelle}}</p>
+        <section>
+            <div class="container mt-5 shadow-lg p-4 mb-5 bg-white rounded">
+                <h1 id="title_boulangerie" class="text-center text-light mt-5 bg-primary p-5">Découvrez notre Boulangerie</h1>
+                <div class="row">
+                {% for product in products %}
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5">
+                        <div class="card border-primary mb-3 mx-auto" style="max-width:20rem">
+                            <div class="card-header text-center bg-primary">
+                                <img src="{{asset('images/products/' ~ product.image)}}" class="resizing_image card-img-top" alt="Photo du produit,'{{product.name}}'">
+                            </div> 
+                            <p class="text-center mt-2 h4">{{product.name}}</p>
+                            
+                            <div class="card-body">
+
+                                    <table class="table text-center">
+                                        <tr>
+                                            <td>Prix</td>
+                                            <td>{{product.price}} euros</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description</td>
+                                            <td>{{product.description}}</td>
+                                        </tr>
+                                    </table>
+                                    <p class="text-center colorpersopink">{{product.categoryprod.libelle}}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
 
-        </div>
-    </div>   
-</section>
+                </div>
+            </div>   
+        </section>
 {% endblock %}

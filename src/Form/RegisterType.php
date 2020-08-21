@@ -22,10 +22,10 @@ class RegisterType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => ['attr' => ['placeholder' => 'Entrez votre mot de passe']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
             ])
             ->add('mail', EmailType::class)
             ;
