@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+{% block meta_des_name %}Se connecter{% endblock %}
+{% block meta_des_content %}Connecter vous, n'attendez plus{% endblock %}
+
+{% block body %}
+    <div class="container bg-light pt-5 mt-5 mb-5 marge">
+        <h1 class="bg-primary text-light  p-5 text-center title_login">S'indentifier</h1>
+        {% if error %}
+            <div class="alert alert-danger">
+                Mauvais Identifiant ou mot de passe.
+            </div>
+        {% endif %}
+        <form action="{{path('login')}}" method="post">
+            <div class="form-group mt-5">
+                <label>Pseudo:</label>
+                <input type="text" required name="_username" class="form-control" value="{{lastUserName}}" placeholder="Entrez votre pseudo">
+            </div>
+            <div class="form-group">
+                <label>Mot de passe:</label>
+                <input type="password" required name="_password" class="form-control" placeholder="Entrez votre mot dde passe">
+            </div>
+            <input type="submit" class="btn btn-primary mb-5" value="s'identifier">
+        </form>
+    </div>
+{% endblock %}

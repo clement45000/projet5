@@ -5,15 +5,13 @@
 {% block meta_des_content %}Venez vous inscrire et échanger avec la communautée{% endblock %}
 
 {% block body %}
-    <div class="container bg-light pt-1 mt-5 mb-5">
-       <h1 class="text-center text-light mt-5 bg-primary p-5">Inscription</h1> 
+    <div class="container bg-light pt-5 mt-5 mb-5">
+       <h1 class="text-center text-light  bg-primary p-5 title_register">Inscription</h1> 
        {% for message in app.flashes('success') %}
         <div class="text-center alert alert-success">
             {{message}}
         </div>
         {% endfor %}
-
-
  
         {{ form_start(form, {'attr': {'novalidate' : 'novalidate'}})}}
         {{ form_row(form.username, {"attr" : {'placeholder':'Entrez votre pseudo'},"label":"Pseudo"})}}

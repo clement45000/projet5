@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Entity\User;
+use App\Form\ContactType;
 use App\Form\RegisterType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -27,16 +30,46 @@ class GlobalController extends AbstractController
     }
 
      /**
-     * @Route("/contact", name="contact")
+     * @Route("/nous_situer", name="nous_situer")
      */
-    public function contact()
+    public function localisation()
     {
-        return $this->render('global/contact.html.twig', [
+        return $this->render('global/localisation.html.twig', [
       
         ]);
     }
 
-      /**
+     /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(Request $request,MailerInterface $mailer)
+    {
+        $form = $this->createForm(ContactType::class);
+        $contact = $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $email = (new TemplatedEmail())
+                ->from($contact->get('mail')->getData()) //expéditeur
+                ->to('symfony@webproject.ovh')
+                ->subject($contact->get('subject')->getData())
+                ->htmlTemplate('emails/contactmail.html.twig')
+                ->context([
+                    'mail' => $contact->get('mail')->getData(),
+                    'message' => $contact->get('message')->getData(),
+                    'name' => $contact->get('name')->getData(),
+                    'surname' => $contact->get('surname')->getData(),
+                    'subject' => $contact->get('subject')->getData()
+                ]);
+                $mailer->send($email);
+                $this->addFlash('message', 'Votre messsage nous a bien été envoyé');
+                return $this->redirectToRoute('contact');
+        }
+        return $this->render('global/contact.html.twig',[
+            "form" => $form->createView()
+        ]);
+    }
+
+    /**
      * @Route("/client/weather", name="weather")
      */
     public function getWeatherbycity()
@@ -56,45 +89,11 @@ class GlobalController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/inscription", name="register")
-     */
-    public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
-    {
-        $user = new User();
-        $form = $this->createForm(RegisterType::class,$user);
-        $form->handleRequest($request);
+    
 
-        if($form->isSubmitted() && $form->isValid()){
-            $passwordCrypte = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($passwordCrypte);
-            $user->setRoles("ROLE_USER");
-            $em->persist($user);
-            $em->flush();
-            $this->addFlash("success", "Votre vompte a été crée");
-            return $this->redirectToRoute("register");
-        }
-        return $this->render('global/register.html.twig',[
-            "form" => $form->createView()
-        ]);
-    }
+    
 
-    /**
-     * @Route("/connexion", name="login")
-     */
-    public function login(AuthenticationUtils $util){
-        return $this->render('global/login.html.twig',[
-            "lastUserName" => $util->getLastUsername(),
-            "error" => $util->getLastAuthenticationError()
-        ]);
-    }
-
-    /**
-     * @Route("/deconnexion", name="logout")
-     */
-    public function logout(){
-      
-    }
+    
 
 
 

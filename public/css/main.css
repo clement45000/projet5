@@ -134,6 +134,11 @@ font-size: 3em;
     height: 450px !important;
 }
 
+/* --------------  connexion --------------- */
+.marge{
+    margin-bottom: 100px !important;
+}
+
     /* -------------- RESPONSIVE ------------------ */
     /*  ---------------  Break point n° 1 ---------*/
 
@@ -443,7 +448,6 @@ font-size: 3em;
         
         .pagination_produits ul{
             font-size :0.4em;
-            padding-left: -15px !important;
             margin-left: -30px !important;
         }
 
@@ -489,12 +493,41 @@ font-size: 3em;
 
         .font_nous_situer{
             font-size: 1.3em;
-          
         }
 
         .title_h2_nous_situer{
-            font-size: 1.8em;
+            font-size: 1.2em !important;
         }
+
+        /*  Nous Contacter */
+        .title_nous_contacter{
+            font-size: 1.8em !important;
+            margin-top: 5px !important;
+            padding-left: 5px !important;
+            padding-right : 5px !important;
+        }
+
+          /*  Inscription */
+          .title_register{
+            font-size: 1.8em !important;
+            margin-bottom : 15px !important;
+            margin-top: 5px !important;
+            padding-left: 5px !important;
+            padding-right : 5px !important;
+        }
+
+          /*  Connexion */
+          .title_login{
+            font-size: 1.8em !important;
+            margin-top: 5px !important;
+            padding-left: 5px !important;
+            padding-right : 5px !important;
+        }
+
+        /* --------------  connexion --------------- */
+           .marge{
+                margin-bottom: 50px !important;
+            }
 
         /* -------- FOOTER --------- */
         .font_footer{

@@ -54,9 +54,13 @@
                             <a class="nav-link size_font" href="{{path('weather')}}">Météo</a>
                         </li>
 {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link size_font" href="{{path('contact')}}">Nous situer</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle size_font "  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plus</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item size_font" href="{{path('nous_situer')}}">Nous situer</a>
+                                <a class="dropdown-item size_font " href="{{path('contact')}}">Nous contacter</a>
+                            </div>
+                        </li> 
 {% if is_granted('ROLE_ADMIN')%}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle size_font "  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
@@ -72,7 +76,7 @@
                     <a class="nav-link text-light size_font" href="{{path('login')}}">Se connecter</a>
 {% else %}
                     <span class="text-light">(Vous êtes connecté)</span>
-                    <a class="nav-link text-light size_font" href="{{path('logout')}}">Se déconnecter</a> 
+                    <a class="nav-link text-light size_font" href="{{path('logout')}}">Deconnexion</a> 
 {% endif %}
                 </div>
             </nav>
@@ -89,7 +93,8 @@
                             <p class="h1 font_footer">Navigation</p>
                             <div><a class="text-muted h5" href="{{path('products')}}">Produits</a></div>
                             <div><a class="text-muted h5" href="{{path('show_posts')}}">Actualités</a></div>
-                            <div><a class="text-muted h5" href="{{path('contact')}}">Nous situer</a></div>
+                            <div><a class="text-muted h5" href="{{path('nous_situer')}}">Nous situer</a></div>
+                            <div><a class="text-muted h5" href="{{path('contact')}}">Nous contacter</a></div>
                             <div><a class="text-muted h5" href="{{path('mentions_legales')}}">Politique de confidentialité</a></div> 
                         </div>  
                     </div>
