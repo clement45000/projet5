@@ -1,6 +1,6 @@
 # Boulangerie-Pâtisserie  (projet étudiant fictif)
 
-Projet étudiant lors de ma formation developpeur web Junior au sein de la plateforme OPENCLASSROOM
+Projet étudiant lors de ma formation developpeur web Junior au sein de la plateforme OPENCLASSROOMS
 
 Ce projet contient :
 - Une page d'accueil présentation de l'entreprise
